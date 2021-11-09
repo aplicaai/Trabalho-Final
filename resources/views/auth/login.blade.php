@@ -70,7 +70,7 @@
                                     <div class="col text-left">
                                         <label class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option1">
-                                            <span class="custom-control-label">&nbsp;Lembre-me</span>
+                                            <span class="custom-control-label">&nbsp;Lembre-me (teste)</span>
                                         </label>
                                     </div>
                                     <div class="col text-right">
