@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Add User')}}</h5>
-                            <span>{{ __('Create new user, assign roles & permissions')}}</span>
+                            <h5>{{ __('Adicionar Usuário')}}</h5>
+                            <span>{{ __('Criar um novo usuário, definir regras e permissões')}}</span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 <a href="{{url('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Add User')}}</a>
+                                <a href="#">{{ __('Adicionar Usuário')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -40,7 +40,7 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header">
-                        <h3>{{ __('Add user')}}</h3>
+                        <h3>{{ __('Adicionar Usuário')}}</h3>
                     </div>
                     <div class="card-body">
                         <form class="forms-sample" method="POST" action="{{ route('create-user') }}" >
@@ -49,7 +49,7 @@
                                 <div class="col-sm-6">
 
                                     <div class="form-group">
-                                        <label for="name">{{ __('Username')}}<span class="text-red">*</span></label>
+                                        <label for="name">{{ __('Nome de usuário')}}<span class="text-red">*</span></label>
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="" placeholder="Enter user name" required>
                                         <div class="help-block with-errors"></div>
 
@@ -72,7 +72,7 @@
                                     </div>
                                    
                                     <div class="form-group">
-                                        <label for="password">{{ __('Password')}}<span class="text-red">*</span></label>
+                                        <label for="password">{{ __('Senha')}}<span class="text-red">*</span></label>
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter password" required>
                                         <div class="help-block with-errors"></div>
 
@@ -83,7 +83,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="password-confirm">{{ __('Confirm Password')}}<span class="text-red">*</span></label>
+                                        <label for="password-confirm">{{ __('Confirmar Senha')}}<span class="text-red">*</span></label>
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Retype password" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -96,20 +96,20 @@
                                 <div class="col-md-6">
                                     <!-- Assign role & view role permisions -->
                                     <div class="form-group">
-                                        <label for="role">{{ __('Assign Role')}}<span class="text-red">*</span></label>
+                                        <label for="role">{{ __('Atribuir Regra')}}<span class="text-red">*</span></label>
                                         {!! Form::select('role', $roles, null,[ 'class'=>'form-control select2', 'placeholder' => 'Select Role','id'=> 'role', 'required'=> 'required']) !!}
                                     </div>
                                     <div class="form-group" >
-                                        <label for="role">{{ __('Permissions')}}</label>
+                                        <label for="role">{{ __('Permissões')}}</label>
                                         <div id="permission" class="form-group" style="border-left: 2px solid #d1d1d1;">
-                                            <span class="text-red pl-3">Select role first</span>
+                                            <span class="text-red pl-3">Selecione a regra primeiro</span>
                                         </div>
                                         <input type="hidden" id="token" name="token" value="{{ csrf_token() }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">{{ __('Submit')}}</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('Cadastrar Usuário')}}</button>
                                     </div>
                                 </div>
                             </div>

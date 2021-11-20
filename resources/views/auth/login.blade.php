@@ -70,7 +70,7 @@
                                     <div class="col text-left">
                                         <label class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option1">
-                                            <span class="custom-control-label">&nbsp;Lembre-me (teste)</span>
+                                            <span class="custom-control-label">&nbsp;Lembre-me</span>
                                         </label>
                                     </div>
                                     <div class="col text-right">
@@ -82,9 +82,9 @@
                                 <div class="sign-btn text-center">
                                     <button class="btn btn-custom">Entrar</button>
                                 </div>
-                                <!-- <div class="register">
-                                    <p>{{ __('No account?')}} <a href="{{url('register')}}">{{ __('Sign Up')}}</a></p>
-                                </div> -->
+                                <div class="register">
+                                    <p>{{ __('Não é cadastrado?')}} <a href="{{url('register')}}">{{ __('Cadastrar-se')}}</a></p>
+                                </div>
                                 
                             </form>
                         </div>
