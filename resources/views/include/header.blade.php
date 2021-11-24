@@ -2,9 +2,9 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between">
             <div class="top-menu d-flex align-items-center">
-                <button type="button" class="btn-icon mobile-nav-toggle d-lg-none"><span></span></button>
+                <!-- <button type="button" class="btn-icon mobile-nav-toggle d-lg-none"><span></span></button> -->
                 
-                <div class="header-search">
+                <!-- <div class="header-search">
                     <div class="input-group">
 
                         <span class="input-group-addon search-close">
@@ -13,16 +13,16 @@
                         <input type="text" class="form-control">
                         <span class="input-group-addon search-btn"><i class="ik ik-search"></i></span>
                     </div>
-                </div>
-                <button class="nav-link" title="clear cache">
-                    <a  href="{{url('clear-cache')}}">
+                </div> -->
+                <!-- <button class="nav-link" title="clear cache"> -->
+                    <!-- <a  href="{{url('clear-cache')}}">
                     <i class="ik ik-battery-charging"></i> 
-                </a>
-                </button> &nbsp;&nbsp;
-                <button type="button" id="navbar-fullscreen" class="nav-link"><i class="ik ik-maximize"></i></button>
+                </a> -->
+                <!-- </button> &nbsp;&nbsp; -->
+                <!-- <button type="button" id="navbar-fullscreen" class="nav-link"><i class="ik ik-maximize"></i></button> -->
             </div>
             <div class="top-menu d-flex align-items-center">
-                <div class="dropdown">
+                <!-- <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="notiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-bell"></i><span class="badge bg-danger">3</span></a>
                     <div class="dropdown-menu dropdown-menu-right notification-dropdown" aria-labelledby="notiDropdown">
                         <h4 class="header">{{ __('Notifications')}}</h4>
@@ -57,8 +57,8 @@
                         </div>
                         <div class="footer"><a href="javascript:void(0);">{{ __('See all activity')}}</a></div>
                     </div>
-                </div>
-                <button type="button" class="nav-link ml-10 right-sidebar-toggle"><i class="ik ik-message-square"></i><span class="badge bg-success">3</span></button>
+                </div> -->
+                <!-- <button type="button" class="nav-link ml-10 right-sidebar-toggle"><i class="ik ik-message-square"></i><span class="badge bg-success">3</span></button>
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-plus"></i></a>
                     <div class="dropdown-menu dropdown-menu-right menu-grid" aria-labelledby="menuDropdown">
@@ -75,16 +75,19 @@
                         <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Notifications"><i class="ik ik-bell"></i></a>
                         <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="More"><i class="ik ik-more-horizontal"></i></a>
                     </div>
-                </div>
-                <button type="button" class="nav-link ml-10" id="apps_modal_btn" data-toggle="modal" data-target="#appsModal"><i class="ik ik-grid"></i></button>
+                </div> -->
+                <span>@if(date('H') >= 0 && date('H') <= 12) <span>Olá  Bom dia, </span>@endif @if(date('H') >= 13 && date('H') <= 18) <span>Olá  Boa Tarde,</span>@endif @if(date('H') >= 19 && date('H') <= 23) <span>Olá  Boa Noite,</span>@endif</span>
+                <span>{{Auth::user()->name}}</span>
+
+                <!-- <button type="button" class="nav-link ml-10" id="apps_modal_btn" data-toggle="modal" data-target="#appsModal"><i class="ik ik-grid"></i></button> -->
                 <div class="dropdown">
-                    <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="{{ asset('img/user.jpg')}}" alt=""></a>
+                    <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="{{ asset('img/default.jpg')}}" alt=""></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="{{url('profile')}}"><i class="ik ik-user dropdown-icon"></i> {{ __('Profile')}}</a>
-                        <a class="dropdown-item" href="#"><i class="ik ik-navigation dropdown-icon"></i> {{ __('Message')}}</a>
+                        <!-- <a class="dropdown-item" href="{{url('profile')}}"><i class="ik ik-user dropdown-icon"></i> {{ __('Profile')}}</a> -->
+                        <!-- <a class="dropdown-item" href="#"><i class="ik ik-navigation dropdown-icon"></i> {{ __('Message')}}</a> -->
                         <a class="dropdown-item" href="{{ url('logout') }}">
                             <i class="ik ik-power dropdown-icon"></i> 
-                            {{ __('Logout')}}
+                            {{ __('Sair')}}
                         </a>
                     </div>
                 </div>

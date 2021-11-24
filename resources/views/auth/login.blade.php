@@ -3,12 +3,12 @@
     <head> 
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Login | Laravel Admin Starter Kit - Radmin</title>
+        <title>Entrar | Aplic@ai</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon" />
+        <link rel="icon" href="{{ asset('icone2.png') }}" type="image/x-icon" />
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
         
@@ -23,7 +23,7 @@
 
         <style>
             .row.flex-row.h-100 {
-                background-image: url('/img/login8.jpg');
+                background-image: url('/img/Ibovespa.jpg');
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: 100%;
@@ -43,7 +43,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-4 m-auto">
                         <div class="authentication-form mx-auto">
                             <div class="logo-centered">
-                                <a href=""><img height="40" src="{{ asset('img/Sem Título-1.png') }}" alt="Aplicaai" ></a>
+                                <a href=""><img height="40" src="{{ asset('img/Sem Titulo-1.png') }}" alt="Aplicaai" ></a>
                             </div>
                             <!-- <p>Welcome back! </p> -->
                             <form method="POST" action="{{ route('login') }}">
@@ -83,7 +83,7 @@
                                     <button class="btn btn-custom">Entrar</button>
                                 </div>
                                 <div class="register">
-                                    <p>{{ __('Não é cadastrado?')}} <a href="{{url('register')}}">{{ __('Cadastrar-se')}}</a></p>
+                                    <p>{{ __('Não é cadastrado?')}} <a href="{{url('register')}}"><span style="color: blue;">{{ __('Cadastrar-se')}}</span></a></p>
                                 </div>
                                 
                             </form>

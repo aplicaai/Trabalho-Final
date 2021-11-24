@@ -9,6 +9,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +24,24 @@ use App\Http\Controllers\PermissionController;
 |
 */ 
 // Route::get('/', function () { return view('home'); });
+// Auth::routes(['verify' => true]);
 
-Route::get('/', [LoginController::class,'showLoginForm'])->name('login');
-Route::get('login', [LoginController::class,'showLoginForm'])->name('login');
+
+// Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Auth::routes(['verify' => true]);
+
+
+Route::get('/', [LoginController::class,'showLoginForm'])->name('login-send');
+// Route::get('login', [LoginController::class,'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class,'login']);
 Route::post('register', [RegisterController::class,'register']);
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/dashboard');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
 
 Route::get('password/forget',  function () { 
 	return view('pages.forgot-password'); 
@@ -34,16 +50,23 @@ Route::post('password/email', [ForgotPasswordController::class,'sendResetLinkEma
 Route::get('password/reset/{token}', [ResetPasswordController::class,'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class,'reset'])->name('password.update');
 
+Route::get('/email/verify', function () {
+	return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
 
 Route::group(['middleware' => 'auth'], function(){
 	// logout route
 	Route::get('/logout', [LoginController::class,'logout']);
 	Route::get('/clear-cache', [HomeController::class,'clearCache']);
+	
+	
 
 	// dashboard route  
 	Route::get('/dashboard', function () { 
 		return view('pages.dashboard'); 
-	})->name('dashboard');
+	})->name('dashboard')->middleware('verified');
+
+	
 
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function(){
