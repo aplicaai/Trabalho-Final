@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarteiraController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -90,6 +91,15 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/table-datatable-edit', function () { 
 		return view('pages.datatable-editable'); 
 	});
+
+
+	//Adicionados
+	//Carteira
+	Route::get('/cadastro-da-carteira', [CarteiraController::class, 'cadastrar']);
+	Route::get('/listar-carteiras', [CarteiraController::class, 'listar']);
+
+	Route::post('/lista-acoes', [CarteiraController::class, 'lista_acoes'])->name('lista-acoes');
+
 
     // Themekit demo pages
 	Route::get('/calendar', function () { return view('pages.calendar'); });
