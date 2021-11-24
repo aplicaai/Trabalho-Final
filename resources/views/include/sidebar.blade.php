@@ -51,9 +51,9 @@
                 </div>
                 <div class="nav-lavel">{{ __('Themekit Pages')}} </div>
                 <div class="nav-item {{ ($segment1 == 'form-components' || $segment1 == 'form-advance'||$segment1 == 'form-addon') ? 'active open' : '' }} has-sub">
-                    <a href="#"><i class="ik ik-edit"></i><span>{{ __('Forms')}}</span></a>
+                    <a href="#"><i class="ik ik-edit"></i><span>{{ __('Carteira')}}</span></a>
                     <div class="submenu-content">
-                        <a href="{{url('form-components')}}" class="menu-item {{ ($segment1 == 'form-components') ? 'active' : '' }}">{{ __('Components')}}</a>
+                        <a href="{{url('cadastro-da-carteira')}}" class="menu-item {{ ($segment1 == 'form-components') ? 'active' : '' }}">{{ __('Cadastro')}}</a>
                         <a href="{{url('form-addon')}}" class="menu-item {{ ($segment1 == 'form-addon') ? 'active' : '' }}">{{ __('Add-On')}}</a>
                         <a href="{{url('form-advance')}}" class="menu-item {{ ($segment1 == 'form-advance') ? 'active' : '' }}">{{ __('Advance')}}</a>
                     </div>

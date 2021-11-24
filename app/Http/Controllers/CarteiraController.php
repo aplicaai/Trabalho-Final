@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 //use config\app.php;
 
+//use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Input;
@@ -12,18 +13,23 @@ class CarteiraController extends Controller
 {
     public function cadastrar() {
         
+
+        
+
+        $url = 'https://fundamentus.com.br/detalhes.php?papel=';
+
+        //dd(json_decode($url, true));
+
         $array = ['0' => 'ALPA4', '1' => 'ABEV3', '2' => 'AMER3'];
         $infos = [];
         $dados = [];
-
-        $hue = json_decode(file_get_contents('https://fundamentus.com.br/detalhes.php?papel='), true);
-        dd($hue);
-
 
         foreach($array as $a) {
             $url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='.$a.'.SA&outputsize=compact&apikey=T8HJ16FJW1AXFEHK';    
             array_push($infos ,json_decode(file_get_contents($url), true));
         }
+
+        //dd($infos);
 
         foreach($infos as $info) {
             $symbol = $info ['Meta Data']['2. Symbol'];

@@ -149,7 +149,7 @@
                                     <tr>
                                         <td>
                                             <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input select_all_child" id="" name="checkbox[]" value="1">
+                                                <input type="checkbox" class="custom-control-input select_all_child" id="" name="checkbox[]" value="{{$dado['symbol']}}">
                                                 <span class="custom-control-label">&nbsp;</span>
                                             </label>
                                         </td>
