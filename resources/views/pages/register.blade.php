@@ -22,10 +22,10 @@
         <link rel="stylesheet" href="{{ asset('dist/css/theme-image.css') }}">
         <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
         <style>
-            .auth-wrapper .lavalite-bg .lavalite-overlay {
+            /* .auth-wrapper .lavalite-bg .lavalite-overlay {
                 background: linear-gradient(
                 135deg, rgba(46,52,81,0.4) -100%, rgba(52,40,104,0.95) 100%);
-            }
+            } */
         </style>
     </head>
 
@@ -42,10 +42,7 @@
                         
                         <div class="lavalite-bg" style="display: flex; justify-content:center; align-items:center;">
                             <div class="lavalite-overlay"></div>
-                            <p>
-                                <img style="position:relative; margin-bottom: 25px; left: 172px; border-radius: 10px"  src="{{ asset('img/Sem Titulo-1.png') }}" alt="logo"> <br>
-                                <span style="position: relative; border: 4px solid; border-radius: 10px; padding: 6px; color: white; font-size: 25px; font-weight: 900;">Cadastre-se para começar a investir imediatamente!</span>
-                            </p>
+                           
                         </div>
                         
                         

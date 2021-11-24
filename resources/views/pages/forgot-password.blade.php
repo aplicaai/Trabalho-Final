@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{{ __('Forgot Password | Radmin - Laravel Admin Starter') }}</title>
+        <title>{{ __('Esqueceu a senha | Aplic@ai') }}</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="icon" href="{{ asset('favicon.png')}}" type="image/x-icon" />
+        <link rel="icon" href="{{ asset('icone2.png')}}" type="image/x-icon" />
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
         
@@ -39,10 +39,10 @@
                     <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
                         <div class="authentication-form mx-auto">
                             <div class="logo-centered">
-                                <a href=""><img width="150"  src="{{ asset('img/logo.png')}}" alt=""></a>
+                                <a href=""><img width="150"  src="{{ asset('img/Sem Titulo-1.png')}}" alt=""></a>
                             </div>
-                            <h3>{{ __('Forgot Password') }}</h3>
-                            <p>{{ __('We will send you a link to reset password.') }}</p>
+                            <h3>{{ __('Esqueceu a senha') }}</h3>
+                            <p>{{ __('Enviaremos a você um link para redefinir a senha.') }}</p>
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('status') }}
@@ -51,7 +51,7 @@
                             <form method="POST" action="{{ route('password.email') }}">
                             @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Your email address" name="email" value="{{ old('email') }}" required>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Seu endereço de email" name="email" value="{{ old('email') }}" required>
                                     <i class="ik ik-mail"></i>
                                 </div>
                                 @error('email')
@@ -60,11 +60,11 @@
                                     </span>
                                 @enderror
                                 <div class="sign-btn text-center">
-                                    <button class="btn btn-theme">{{ __('Submit') }}</button>
+                                    <button class="btn btn-theme">{{ __('Enviar') }}</button>
                                 </div>
                             </form>
                             <div class="register">
-                                <p>{{ __('Not a member') }}? <a href="{{ url('register')}}">{{ __('Create an account') }}</a></p>
+                                <p>{{ __('não tem cadastro') }}? <a href="{{ url('register')}}"><span style="color: blue;">{{ __('Criar uma conta') }}</span></a></p>
                             </div>
                         </div>
                     </div>
