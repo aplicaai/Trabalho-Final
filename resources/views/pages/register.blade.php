@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{{ __('Sign Up | Radmin - Laravel Admin Starter')}}</title>
+        <title>{{ __('Cadastrar-se | Aplic@ai')}}</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="icon" href="{{ asset('favicon.png') }}"/>
+        <link rel="icon" href="{{ asset('icone2.png') }}"/>
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
         
@@ -21,6 +21,12 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/theme-image.css') }}">
         <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+        <style>
+            .auth-wrapper .lavalite-bg .lavalite-overlay {
+                background: linear-gradient(
+                135deg, rgba(46,52,81,0.4) -100%, rgba(52,40,104,0.95) 100%);
+            }
+        </style>
     </head>
 
     <body>
@@ -31,17 +37,28 @@
         <div class="auth-wrapper">
             <div class="container-fluid h-100">
                 <div class="row flex-row h-100 bg-white">
+                    
                     <div class="col-xl-8 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
-                        <div class="lavalite-bg">
+                        
+                        <div class="lavalite-bg" style="display: flex; justify-content:center; align-items:center;">
                             <div class="lavalite-overlay"></div>
+                            <p>
+                                <img style="position:relative; margin-bottom: 25px; left: 172px; border-radius: 10px"  src="{{ asset('img/Sem Titulo-1.png') }}" alt="logo"> <br>
+                                <span style="position: relative; border: 4px solid; border-radius: 10px; padding: 6px; color: white; font-size: 25px; font-weight: 900;">Cadastre-se para começar a investir imediatamente!</span>
+                            </p>
                         </div>
+                        
+                        
                     </div>
+                    
                     <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
                         <div class="authentication-form mx-auto">
                             <div class="logo-centered">
-                                <a href=""><img width="200" src="{{ asset('img/Sem Título-1.png') }}" alt=""></a>
+                                
+                                <a href=""><img width="200" src="{{ asset('img/Sem Titulo-1.png') }}" alt="logo"></a>
+                                <p>{{ __('Cadastre-se para ter acesso aos nossos serviços!')}}</p>
                             </div>
-                            <p>{{ __('Começe a Investir hoje! Em apenas alguns passos')}}</p>
+                            
                             <form action="{{url('register')}}" method="post">
                                 @csrf
                                 <div class="form-group">
@@ -73,7 +90,7 @@
                                 </div>
                             </form>
                             <div class="register">
-                                <p>{{ __('Já possui cadastro?')}} <a href="{{url('login')}}">{{ __('Entrar')}}</a></p>
+                                <p>{{ __('Já possui cadastro?')}} <a href="{{url('login')}}"><span style="color: blue;">{{ __('Entrar')}}</span></a></p>
                             </div>
                         </div>
                     </div>
