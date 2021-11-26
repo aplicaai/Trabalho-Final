@@ -136,9 +136,9 @@
                                                 <span class="custom-control-label">&nbsp;</span>
                                             </label>
                                         </th>
-                                        <th class="nosort">Avatar</th>
-                                        <th>Ativo</th>
-                                        <th>Position</th>
+                                        <th class="nosort">Ação</th>
+                                        <th>Nome</th>
+                                        <th>Razão</th>
                                         <th>Preço por ação</th>
                                         <th>% participação</th>
                                         <th>Empresa VS R$</th>
@@ -146,6 +146,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($dados as $dado)
+                                    
                                     <tr>
                                         <td>
                                             <label class="custom-control custom-checkbox">
@@ -153,10 +154,10 @@
                                                 <span class="custom-control-label">&nbsp;</span>
                                             </label>
                                         </td>
-                                        <td>System Architect</td>
-                                        <td>{{$dado['symbol']}}</td>
-                                        <td>Edinburgh</td>
-                                        <td>{{$dado['price']}} R$</td>
+                                        <td>{{$dado['acao']}}</td>
+                                        <td>{{$dado['nome']}}</td>
+                                        <td>R$ {{ $dado['preco']}}</td>
+                                        <td></td>
                                         <td>2011/04/25</td>
                                         <td>$320,800</td>
                                     </tr>

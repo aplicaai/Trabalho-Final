@@ -8,38 +8,29 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Input;
 use AlphaVantage\Api;
+use App\model\acao;
+use Http;
 
 class CarteiraController extends Controller
 {
     public function cadastrar() {
         
+        $dados = acao::limit(5)->get();       
 
+        foreach ($dados as $dado ) {
+
+            $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=aac5dccd&fields=price&symbol='.$dado->acao);
+            $ret = $resp->json()['results'];
+
+            if(array_key_exists($dado->acao, $ret)) {
+                $dado->preco = $ret[$dado->acao];
+            } else {
+                $dado->preco = "Cotação R$ 0,00";
+            }
+        }
+
+        return view('pages.carteira-cadastrar', compact('dados'));
         
-
-        $url = 'https://fundamentus.com.br/detalhes.php?papel=';
-
-        //dd(json_decode($url, true));
-
-        $array = ['0' => 'ALPA4', '1' => 'ABEV3', '2' => 'AMER3'];
-        $infos = [];
-        $dados = [];
-
-        foreach($array as $a) {
-            $url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='.$a.'.SA&outputsize=compact&apikey=T8HJ16FJW1AXFEHK';    
-            array_push($infos ,json_decode(file_get_contents($url), true));
-        }
-
-        //dd($infos);
-
-        foreach($infos as $info) {
-            $symbol = $info ['Meta Data']['2. Symbol'];
-            $price = reset($info ['Time Series (Daily)']);
-            $price = $price['4. close'];
-            array_push($dados, ['symbol' => $symbol, 'price' => $price]);
-        }
-
-        //exit;
-        return view('pages.carteira-cadastrar', ['dados' => $dados, 'nomes' => $array]);
     }
 
     public function listar() {
