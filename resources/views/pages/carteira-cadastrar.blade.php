@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <form class="forms-sample" method="post" action="{{route('lista-acoes')}}">
+        <form class="forms-sample" method="post" action="{{route('carteira-valores')}}">
             @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -39,11 +39,11 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="nome_carteira">{{ __('Nome da carteira')}}</label>
-                                <input type="text" class="form-control" id="nome_carteira" name="nome_carteira" placeholder="Nome da carteira">
+                                <input type="text" class="form-control" required id="nome_carteira" name="nome_carteira" placeholder="Nome da carteira">
                             </div>
                             <div class="form-group">
                                 <label for="valor_carteira">{{ __('Valor da carteira')}}</label>
-                                <input type="text" class="form-control" id="valor_carteira" name="valor_carteira" placeholder="Valor">
+                                <input type="text" class="form-control" required id="valor_carteira" name="valor_carteira" placeholder="Valor">
                             </div>
                         </div>
                     </div>
@@ -145,6 +145,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     @foreach($dados as $dado)
                                     
                                     <tr>
@@ -154,13 +155,15 @@
                                                 <span class="custom-control-label">&nbsp;</span>
                                             </label>
                                         </td>
-                                        <td>{{$dado['acao']}}</td>
-                                        <td>{{$dado['nome']}}</td>
-                                        <td>R$ {{ $dado['preco']}}</td>
-                                        <td></td>
+
+                                        <td>{{$dado['symbol']}}</td>
+                                        <td>{{$dado['name']}}</td>
+                                        <td>{{ $dado['company_name']}}</td>
+                                        <td>R$ {{$dado['price']}}</td>
                                         <td>2011/04/25</td>
                                         <td>$320,800</td>
                                     </tr>
+                                    
                                     @endforeach
                                 </tbody>
                             </table>
