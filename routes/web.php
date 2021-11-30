@@ -119,14 +119,14 @@ Route::group(['middleware' => 'auth'], function(){
 	//Adicionados
 	//Carteira
 	Route::get('/cadastro-da-carteira', [CarteiraController::class, 'cadastrar']);
-	Route::get('/listar-carteiras', [CarteiraController::class, 'listar']);
+	Route::get('/listar-carteiras', [CarteiraController::class, 'listar'])->name('carteira-listar');
+	Route::get('/alterar-acao/{id}', [CarteiraController::class, 'alterar'])->name('carteira-alterar');
 
 
-	
+
+	Route::post('/carteira-alterar', [CarteiraController::class, 'carteira_alterar'])->name('carteira-alterar');
 	Route::post('/valores-da-carteira', [CarteiraController::class, 'carteira_valores'])->name('carteira-valores');
-
 	Route::post('/carteira-cadastrar', [CarteiraController::class, 'carteira_cadastrar'])->name('carteira-cadastrar');
-
 	Route::post('/lista-acoes', [CarteiraController::class, 'lista_acoes'])->name('lista-acoes');
 
 

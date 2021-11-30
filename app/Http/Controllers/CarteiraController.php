@@ -19,6 +19,19 @@ use Http;
 class CarteiraController extends Controller
 {
 
+    public function alterar($id_carteira) {
+
+        $dadosAcao_carteiras = Acao_carteira::all()->where('id_carteira', '=', $id_carteira);
+
+        $acao_carteiras = [];
+        foreach($dadosAcao_carteiras as $ac) {
+            $acao_carteiras[] = $ac;
+        }
+
+        return view('pages.carteira-alterar', compact('acao_carteiras'));
+
+    }
+
     public function pegarDados() {
         $dados = acao::limit(3)->get();  
         $concatenado = '';
@@ -42,6 +55,11 @@ class CarteiraController extends Controller
         return view('pages.carteira-cadastrar', compact('dados'));        
     }
 
+    public function carteira_alterar() {
+        echo "fazer";
+        exit;
+    }
+
     public function carteira_valores(Request $request) {
         $nome = $request->get('nome_carteira');
         $valor_carteira = $request->get('valor_carteira');
@@ -60,7 +78,7 @@ class CarteiraController extends Controller
 
 
     public function carteira_cadastrar() {
-        
+
         $valor = $_POST['acao'];
 
         foreach($valor as $v) {
@@ -78,22 +96,32 @@ class CarteiraController extends Controller
         $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol='.$concatenado);
         $ret = $resp->json()['results'];
 
+        $valores_calculados;
         foreach($ret as $r) {
-            $porcentagens[$r['symbol']] = ($valor_carteira*$porcentagens[$r['symbol']])/100;
+            $valores_calculados[$r['symbol']] = ($valor_carteira*$porcentagens[$r['symbol']])/100;
         }
                 
-        Carteira::create(['id_usuario'=>Auth::id(),'acao'=>$nome, 'preco_acao'=>1]);
-
+        Carteira::create(['id_usuario'=>Auth::id(),'nome'=>$nome, 'valor'=>$valor_carteira]);
+        $id_carteira = Carteira::orderBy('created_at', 'desc')->get('id')->first();
+        
         foreach($ret as $r) {
-            Acao_carteira::create(['id_usuario'=>Auth::id(), 'acao'=>$r['symbol'], 'valor'=>$porcentagens[$r['symbol']], 'porcentagem'=>$r['price'], 'preco_acao'=>$r['price']]);
+            Acao_carteira::create(['id_usuario'=>Auth::id(), 'id_carteira'=>$id_carteira->id, 'acao'=>$r['symbol'], 'valor'=>$valores_calculados[$r['symbol']], 'porcentagem'=>$porcentagens[$r['symbol']], 'preco_acao'=>$r['price']]);
         }
 
-        return view('pages.dashboard');
+        return redirect('/dashboard');
     }
 
 
     public function listar() {
-        return view('pages.carteira-listar');
+        
+        $dadosCarteiras = Carteira::all()->where('id_usuario', '=', Auth::id());
+
+        $carteiras = [];
+        foreach($dadosCarteiras as $dc) {
+           $carteiras[] = $dc;
+        }
+
+        return view('pages.carteira-listar', compact('carteiras'));
     }
 
     public function json(Request $request) {
