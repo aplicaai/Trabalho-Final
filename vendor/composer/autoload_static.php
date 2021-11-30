@@ -630,6 +630,8 @@ class ComposerStaticInit4a07fb3d405c38cfd43752f4a31068b6
     );
 
     public static $classMap = array (
+        'App\\Acao_carteira' => __DIR__ . '/../..' . '/app/Acao_carteira.php',
+        'App\\Carteira' => __DIR__ . '/../..' . '/app/Carteira.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Api\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AuthController.php',

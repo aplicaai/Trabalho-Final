@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarteirasTable extends Migration
+class CreateAcaoCarteirasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateCarteirasTable extends Migration
      */
     public function up()
     {
-        Schema::create('carteiras', function (Blueprint $table) {
+        Schema::create('acao_carteiras', function (Blueprint $table) {
             $table->id();
-            $table->int('id_usario');
-            $table->string('nome_carteira');
-            $table->int('valor');
-            $table->int('porcentagem');
+            $table->integer('id_usuario');
             $table->string('acao');
+            $table->float('valor');
+            $table->float('porcentagem');
+            $table->float('preco_acao');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateCarteirasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carteiras');
+        Schema::dropIfExists('acao_carteiras');
     }
 }

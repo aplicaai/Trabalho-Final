@@ -9,7 +9,10 @@ use App\Http\Requests;
 use App\Http\Controllers\Input;
 use AlphaVantage\Api;
 use App\model\acao;
+use App\model\Carteira;
 use Http;
+
+
 
 class CarteiraController extends Controller
 {
@@ -65,18 +68,21 @@ class CarteiraController extends Controller
         $nome = $_POST['nome'];
         $valor_carteira = $_POST['valor_carteira'];
 
+        //Busca valores
         $concatenado = '';
-
         foreach($valor as $v) {
             $concatenado = $concatenado.','.$v;
         }
-
         $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol='.$concatenado);
         $ret = $resp->json()['results'];
 
-        dd($nome, $valor_carteira, $ret);
-
-        //DB::insert('insert into carteiras (id_usuario, nome_carteira, valor, porcentagem, acao) values (,$nome, $valor_carteira, )', [])
+        foreach($ret as $r) {
+            $porcentagens[$r['symbol']] = ($valor_carteira*$porcentagens[$r['symbol']])/100;
+        }
+        
+        
+        Carteira::create(['id_usuario'=>500,'acao'=>$nome, 'preco_acao'=>1]);
+        exit;
 
         return view('pages.dashboard');
     }
