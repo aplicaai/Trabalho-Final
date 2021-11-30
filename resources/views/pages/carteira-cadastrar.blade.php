@@ -188,13 +188,14 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <button type="submit" class="btn btn-primary mr-2">{{ __('Próximo passo')}}</button>
-                                <button class="btn btn-light">{{ __('Cancelar')}}</button>
+                                </form>   
+                                <a type="button" href="/dashboard" class="btn btn-light">{{ __('Cancelar')}}</a>
                             </div>
                         </div>    
                     </div>
                  
             </div>
-            </form>   
+            
         </div>
 
     <!-- push external js -->

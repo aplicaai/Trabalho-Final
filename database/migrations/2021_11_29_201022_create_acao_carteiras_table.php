@@ -16,6 +16,7 @@ class CreateAcaoCarteirasTable extends Migration
         Schema::create('acao_carteiras', function (Blueprint $table) {
             $table->id();
             $table->integer('id_usuario');
+            $table->integer('id_carteira');
             $table->string('acao');
             $table->float('valor');
             $table->float('porcentagem');

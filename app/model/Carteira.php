@@ -11,6 +11,6 @@ class Carteira extends Model
     protected $table = "Carteiras";
     public $timestamps = true;
 
-    protected $fillable = ['id_usuario','acao','preco_acao','created_at', 'updated_at','deleted_at'];
+    protected $fillable = ['id_usuario','nome','valor','created_at', 'updated_at','deleted_at'];
 
 }

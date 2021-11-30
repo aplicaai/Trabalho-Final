@@ -54,7 +54,7 @@
                     <a href="#"><i class="ik ik-edit"></i><span>{{ __('Carteira')}}</span></a>
                     <div class="submenu-content">
                         <a href="{{url('cadastro-da-carteira')}}" class="menu-item {{ ($segment1 == 'form-components') ? 'active' : '' }}">{{ __('Cadastro')}}</a>
-                        <a href="{{url('form-addon')}}" class="menu-item {{ ($segment1 == 'form-addon') ? 'active' : '' }}">{{ __('Add-On')}}</a>
+                        <a href="{{url('listar-carteiras')}}" class="menu-item {{ ($segment1 == 'form-addon') ? 'active' : '' }}">{{ __('Alterar/Listar')}}</a>
                         <a href="{{url('form-advance')}}" class="menu-item {{ ($segment1 == 'form-advance') ? 'active' : '' }}">{{ __('Advance')}}</a>
                     </div>
                 </div>

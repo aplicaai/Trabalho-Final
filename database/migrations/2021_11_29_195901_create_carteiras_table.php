@@ -16,8 +16,8 @@ class CreateCarteirasTable extends Migration
         Schema::create('carteiras', function (Blueprint $table) {
             $table->id();
             $table->integer('id_usuario');
-            $table->string('acao');
-            $table->float('preco_acao');
+            $table->string('nome');
+            $table->float('valor');
             $table->timestamps();
         });
     }

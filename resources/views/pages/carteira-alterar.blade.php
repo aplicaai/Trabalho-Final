@@ -37,14 +37,8 @@
 <!-- ////////////////////////////////////// -->
         <div class="row">
             <div class="col-sm-12">
-                <form class="forms-sample" id="carteira-cadastrar" method="post" action="{{route('carteira-cadastrar')}}">
+                <form class="forms-sample" id="carteira-alterar" method="post" action="{{route('carteira-alterar')}}">
                     @csrf
-                    <input type="hidden" value="{{$valor_carteira}}" name="valor_carteira">
-                    <input type="hidden" value="{{$nome}}" name="nome">
-                    @foreach($valor as $v)
-                        <input type="hidden" name="acao[]" value="{{$v}}">
-                    @endforeach
-
                     <div class="card">
                         <div class="card-header d-block">
                             <h3>{{ __('Zero Configuration')}}</h3>
@@ -56,25 +50,21 @@
                                     <thead>
                                     <tr>
                                         <th class="nosort">Ação</th>
-                                        <th>Nome</th>
-                                        <th>Razão</th>
+                                        <!-- <th>Nome empresa</th> -->
                                         <th>Preço por ação</th>
                                         <th>% participação</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($acoesEscolhidas as $ae)
+                                        @foreach($acao_carteiras as $a)
                                         <tr>
                                             <!-- <input type="hidden" value=""> -->
-                                            <td>{{$ae['symbol']}}</td>
-                                            <td>{{$ae['name']}}</td>
-                                            <td>{{$ae['company_name']}}</td>
+                                            <td>{{$a['acao']}}</td>
                                             <td>
-                                                    
-                                                {{$ae['price']}}
+                                                {{$a['preco_acao']}}
                                             </td>
                                             <td>
-                                                <input id="{{$ae['symbol']}}" class='porcentagem' name="{{$ae['symbol']}}" value="0" type="number" max='100' min='1'>
+                                                <input id="{{$a['symbol']}}" value="{{$a['porcentagem']}}" class='porcentagem' name="{{$a['symbol']}}" value="0" type="number" max='100' min='1'>
                                             </td>
                                         </tr>
                                         @endforeach
