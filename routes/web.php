@@ -40,7 +40,7 @@ Route::post('register', [RegisterController::class,'register']);
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
-    return redirect('/dashboard');
+    return view('auth.verify');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
@@ -52,7 +52,7 @@ Route::get('password/reset/{token}', [ResetPasswordController::class,'showResetF
 Route::post('password/reset', [ResetPasswordController::class,'reset'])->name('password.update');
 
 Route::get('/email/verify', function () {
-	return view('auth.verify');
+	return redirect('/');
 })->middleware('auth')->name('verification.notice');
 
 Route::group(['middleware' => 'auth'], function(){
