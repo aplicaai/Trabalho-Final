@@ -23,14 +23,14 @@
                             <li class="breadcrumb-item">
                                 <a href="{{route('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
-                            <li class="breadcrumb-item"><a href="#">{{ __('Forms')}}</a></li>
+                            <!-- <li class="breadcrumb-item"><a href="#">{{ __('Forms')}}</a></li> -->
                             <li class="breadcrumb-item active" aria-current="page">{{ __('Carteira')}}</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
-        <form class="forms-sample" method="post" action="{{route('valores-da-carteira.carteira-valores')}}">
+        <form class="forms-sample" method="post" action="{{route('carteira-valores')}}">
             @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -57,7 +57,7 @@
                             <h3>{{ __('Empresas e ações')}}</h3>
                         </div>
                         <div  class="card-header">
-                            <div class="col col-sm-3">
+                            <!-- <div class="col col-sm-3">
                                 <div class="card-options d-inline-block">
                                     <a href="#"><i class="ik ik-inbox"></i></a>
                                     <a href="#"><i class="ik ik-plus"></i></a>
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col col-sm-6">
 
                                 <div class="card-search with-adv-search dropdown">

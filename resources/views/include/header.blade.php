@@ -76,8 +76,8 @@
                         <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="More"><i class="ik ik-more-horizontal"></i></a>
                     </div>
                 </div> -->
-                <span>@if(date('H') >= 0 && date('H') <= 12) <span>Olá  Bom dia, </span>@endif @if(date('H') >= 13 && date('H') <= 18) <span>Olá  Boa Tarde,</span>@endif @if(date('H') >= 19 && date('H') <= 23) <span>Olá  Boa Noite,</span>@endif</span>
-                <span>{{Auth::user()->name}}</span>
+                <span>@if(date('H') >= 0 && date('H') <= 12) <span>Olá  Bom dia,&nbsp; </span>@endif @if(date('H') >= 13 && date('H') <= 18) <span> Olá  Boa Tarde,&nbsp; </span> @endif @if(date('H') >= 19 && date('H') <= 23) <span> Olá  Boa Noite,&nbsp; </span>@endif</span>
+                <span> {{ Auth::user()->name}}</span>
 
                 <!-- <button type="button" class="nav-link ml-10" id="apps_modal_btn" data-toggle="modal" data-target="#appsModal"><i class="ik ik-grid"></i></button> -->
                 <div class="dropdown">
