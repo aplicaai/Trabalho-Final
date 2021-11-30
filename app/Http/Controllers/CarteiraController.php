@@ -13,38 +13,77 @@ use Http;
 
 class CarteiraController extends Controller
 {
-    public function cadastrar() {
-        
-        $dados = acao::limit(5)->get();       
 
-        foreach ($dados as $dado ) {
+    public function pegarDados() {
+        $dados = acao::limit(3)->get();  
+        $concatenado = '';
 
-            $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=aac5dccd&fields=price&symbol='.$dado->acao);
-            $ret = $resp->json()['results'];
-
-            if(array_key_exists($dado->acao, $ret)) {
-                $dado->preco = $ret[$dado->acao];
-            } else {
-                $dado->preco = "Cotação R$ 0,00";
-            }
+        for($d=0; $d < count($dados) ;$d++) {
+            $concatenado = $concatenado.$dados[$d]['acao'].',';            
         }
 
-        return view('pages.carteira-cadastrar', compact('dados'));
-        
+        $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol='.$concatenado);
+        $ret = $resp->json()['results'];
+
+        return $ret;
     }
+
+    public function valoresEscolhidos() {
+
+    }
+
+    public function cadastrar() { 
+        $dados = $this->pegarDados();
+        return view('pages.carteira-cadastrar', compact('dados'));        
+    }
+
+    public function carteira_valores(Request $request) {
+        $nome = $request->get('nome_carteira');
+        $valor_carteira = $request->get('valor_carteira');
+        $valor = $request->get('checkbox');
+
+        $acoesEscolhidas = [];
+        $dados = $this->pegarDados();
+        foreach($dados as $dado) {
+            if(in_array($dado['symbol'], $valor)) {
+                array_push($acoesEscolhidas, $dado);
+            }
+        }
+        $contar = count($acoesEscolhidas);
+        return view('pages.carteira-valores', compact('acoesEscolhidas', 'contar', 'valor', 'nome', 'valor_carteira'));
+    }
+
+
+    public function carteira_cadastrar() {
+        
+        $valor = $_POST['acao'];
+
+        foreach($valor as $v) {
+            $porcentagens[$v] = $_POST[$v];
+        }
+
+        $nome = $_POST['nome'];
+        $valor_carteira = $_POST['valor_carteira'];
+
+        $concatenado = '';
+
+        foreach($valor as $v) {
+            $concatenado = $concatenado.','.$v;
+        }
+
+        $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol='.$concatenado);
+        $ret = $resp->json()['results'];
+
+        dd($nome, $valor_carteira, $ret);
+
+        //DB::insert('insert into carteiras (id_usuario, nome_carteira, valor, porcentagem, acao) values (,$nome, $valor_carteira, )', [])
+
+        return view('pages.dashboard');
+    }
+
 
     public function listar() {
         return view('pages.carteira-listar');
-    }
-
-    public function lista_acoes(Request $request) {
-
-        $nome_carteira = $request->get('nome_carteira');
-        $valor_carteira = $request->get('valor_carteira');
-        $check = $request->get('checkbox');
-        dd($nome_carteira, $valor_carteira, $check);
-
-        return view('pages.lista-acoes');
     }
 
     public function json(Request $request) {

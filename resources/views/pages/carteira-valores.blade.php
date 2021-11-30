@@ -1,0 +1,109 @@
+';@extends('layouts.main') 
+@section('title', 'Data Tables')
+@section('content')
+    <!-- push external head elements to head -->
+    @push('head')
+        <link rel="stylesheet" href="{{ asset('plugins/DataTables/datatables.min.css') }}">
+    @endpush
+
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="page-header-title">
+                        <i class="ik ik-inbox bg-blue"></i>
+                        <div class="d-inline">
+                            <h5>{{ __('Data Table')}}</h5>
+                            <span>{{ __('lorem ipsum dolor sit amet, consectetur adipisicing elit')}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <nav class="breadcrumb-container" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{{route('dashboard')}}"><i class="ik ik-home"></i></a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">Tables</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Data Table</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+<!-- ////////////////////////////////////// -->
+        <div class="row">
+            <div class="col-sm-12">
+                <form class="forms-sample" id="carteira-cadastrar" method="post" action="{{route('carteira-cadastrar')}}">
+                    @csrf
+                    <input type="hidden" value="{{$valor_carteira}}" name="valor_carteira">
+                    <input type="hidden" value="{{$nome}}" name="nome">
+                    @foreach($valor as $v)
+                        <input type="hidden" name="acao[]" value="{{$v}}">
+                    @endforeach
+
+                    <div class="card">
+                        <div class="card-header d-block">
+                            <h3>{{ __('Zero Configuration')}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="dt-responsive">
+                                <table id="simpletable"
+                                    class="table table-striped table-bordered nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th class="nosort">Ação</th>
+                                        <th>Nome</th>
+                                        <th>Razão</th>
+                                        <th>Preço por ação</th>
+                                        <th>% participação</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($acoesEscolhidas as $ae)
+                                        <tr>
+                                            <!-- <input type="hidden" value=""> -->
+                                            <td>{{$ae['symbol']}}</td>
+                                            <td>{{$ae['name']}}</td>
+                                            <td>{{$ae['company_name']}}</td>
+                                            <td>
+                                                    
+                                                {{$ae['price']}}
+                                            </td>
+                                            <td>
+                                                <input id="{{$ae['symbol']}}" class='porcentagem' name="{{$ae['symbol']}}" value="0" type="number" max='100' min='1'>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <button onclick='porcentagem()' class="btn btn-primary mr-2">{{ __('Confirmar')}}</button>
+                                <button class="btn btn-light">{{ __('Cancelar')}}</button>
+                            </div>
+                        </div>    
+                    </div>
+                </form>
+            </div>
+
+    <!-- ////////////////////////////////////// -->
+    
+    </div>
+    
+    <!-- push external js -->
+    @push('script')
+        <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
+        <script src="{{ asset('js/datatables.js') }}"></script>
+        <script src="{{ asset('js/porcentagem.js')}}"></script>
+    @endpush
+@endsection
+      

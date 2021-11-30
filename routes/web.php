@@ -121,6 +121,12 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/cadastro-da-carteira', [CarteiraController::class, 'cadastrar']);
 	Route::get('/listar-carteiras', [CarteiraController::class, 'listar']);
 
+
+	
+	Route::post('/valores-da-carteira', [CarteiraController::class, 'carteira_valores'])->name('carteira-valores');
+
+	Route::post('/carteira-cadastrar', [CarteiraController::class, 'carteira_cadastrar'])->name('carteira-cadastrar');
+
 	Route::post('/lista-acoes', [CarteiraController::class, 'lista_acoes'])->name('lista-acoes');
 
 
