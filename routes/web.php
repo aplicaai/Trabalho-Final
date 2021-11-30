@@ -123,7 +123,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 	
-	Route::post('/valores-da-carteira', [CarteiraController::class, 'carteira_valores'])->name('carteira-valores');
+	Route::post('/valores-da-carteira', [CarteiraController::class, 'carteira_valores'])->name('valores-da-carteira.carteira-valores');
 
 	Route::post('/carteira-cadastrar', [CarteiraController::class, 'carteira_cadastrar'])->name('carteira-cadastrar');
 

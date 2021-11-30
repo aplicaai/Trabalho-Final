@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <form class="forms-sample" method="post" action="{{route('carteira-valores')}}">
+        <form class="forms-sample" method="post" action="{{route('valores-da-carteira.carteira-valores')}}">
             @csrf
             <div class="row">
                 <div class="col-md-12">
