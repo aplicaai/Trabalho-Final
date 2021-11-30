@@ -10,6 +10,8 @@ use App\Http\Controllers\Input;
 use AlphaVantage\Api;
 use App\model\acao;
 use App\model\Carteira;
+use App\model\Acao_carteira;
+use Auth;
 use Http;
 
 
@@ -79,10 +81,12 @@ class CarteiraController extends Controller
         foreach($ret as $r) {
             $porcentagens[$r['symbol']] = ($valor_carteira*$porcentagens[$r['symbol']])/100;
         }
-        
-        
-        Carteira::create(['id_usuario'=>500,'acao'=>$nome, 'preco_acao'=>1]);
-        exit;
+                
+        Carteira::create(['id_usuario'=>Auth::id(),'acao'=>$nome, 'preco_acao'=>1]);
+
+        foreach($ret as $r) {
+            Acao_carteira::create(['id_usuario'=>Auth::id(), 'acao'=>$r['symbol'], 'valor'=>$porcentagens[$r['symbol']], 'porcentagem'=>$r['price'], 'preco_acao'=>$r['price']]);
+        }
 
         return view('pages.dashboard');
     }
