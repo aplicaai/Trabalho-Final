@@ -127,7 +127,7 @@
                         </div>
                         
                         <div class="card-body">
-                            <table id="advanced_table" class="table">
+                            <table id="scr-vtr-dynamic" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
                                         <th class="nosort" width="10">
@@ -145,8 +145,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
-                                    @foreach($dados as $dado)
+                                @foreach($dados as $d)
+                                    @foreach($d as $dado)
                                     
                                     <tr>
                                         <td>
@@ -165,6 +165,7 @@
                                     </tr>
                                     
                                     @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                             @push('script') 

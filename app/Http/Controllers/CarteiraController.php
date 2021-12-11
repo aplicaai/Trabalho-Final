@@ -33,18 +33,47 @@ class CarteiraController extends Controller
     }
 
     public function pegarDados() {
-        $dados = acao::limit(10)->get();  
-        // dd($dados);
-        $concatenado = '';
+        //$allDados = acao::all();  
+        $allDados = acao::limit(100)->get();
 
-        for($d=0; $d < count($dados) ;$d++) {
-            $concatenado = $concatenado.$dados[$d]['acao'].',';    
-            // dd($concatenado);        
+        $dados = [];
+
+        foreach($allDados as $d) {
+            array_push($dados,$d->acao);
         }
 
-        $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol='.$concatenado);
-        $ret = $resp->json()['results'];
-        // dd($resp);
+        //dd($dados);
+        $a = 0;
+        $ret = [];
+        foreach($dados as $d) {
+            
+            $concat = "https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol=".$d.",";
+            $a++;
+            if($a == 4) {
+                
+                $a = 0;
+                $resp = Http::get($concat);
+                if(!empty($resp->json()['results'])){
+                    array_push($ret, $resp->json()['results']);
+                }
+                $concat="https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol=";
+            }
+            
+            
+        }
+
+
+        $concatenado = '';
+
+        // for($a=0; $a < 4 ;$a++) {
+        //     for($d=0; $d < count($dados) ;$d++) {
+        //         $concatenado = $concatenado.$dados[$d].',';
+        //         $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol='c$concatenado);
+        //     }
+        //     $ret[] = $resp->json()['results'];
+        //     $concatenado = '';
+        // }
+        
         return $ret;
     }
 
@@ -68,12 +97,15 @@ class CarteiraController extends Controller
 
         $acoesEscolhidas = [];
         $dados = $this->pegarDados();
-        foreach($dados as $dado) {
-            if(in_array($dado['symbol'], $valor)) {
-                array_push($acoesEscolhidas, $dado);
+        foreach($dados as $d) {
+            foreach($d as $dado) {
+                if(in_array($dado['symbol'], $valor)) {
+                    array_push($acoesEscolhidas, $dado);
+                }
             }
         }
         $contar = count($acoesEscolhidas);
+
         return view('pages.carteira-valores', compact('acoesEscolhidas', 'contar', 'valor', 'nome', 'valor_carteira'));
     }
 
@@ -94,17 +126,25 @@ class CarteiraController extends Controller
         foreach($valor as $v) {
             $concatenado = $concatenado.','.$v;
         }
+
+
         $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol='.$concatenado);
         $ret = $resp->json()['results'];
 
-        $valores_calculados = '';
+        $valores_calculados;
         foreach($ret as $r) {
-            $valores_calculados[$r['symbol']] = ($valor_carteira*$porcentagens[$r['symbol']])/100;
+        
+            $p_symbol = $porcentagens[$r['symbol']];
+
+            $vcp = $valor_carteira*$p_symbol;
+            $symbol = $r['symbol'];
+
+            $valores_calculados[$symbol] = ($vcp)/100;
         }
                 
         Carteira::create(['id_usuario'=>Auth::id(),'nome'=>$nome, 'valor'=>$valor_carteira]);
         $id_carteira = Carteira::orderBy('created_at', 'desc')->get('id')->first();
-        
+
         foreach($ret as $r) {
             Acao_carteira::create(['id_usuario'=>Auth::id(), 'id_carteira'=>$id_carteira->id, 'acao'=>$r['symbol'], 'valor'=>$valores_calculados[$r['symbol']], 'porcentagem'=>$porcentagens[$r['symbol']], 'preco_acao'=>$r['price']]);
         }

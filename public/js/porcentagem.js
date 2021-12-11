@@ -10,19 +10,35 @@ function porcentagem() {
     var soma = 0;
 
     for(var i = 0; i < porcentagens.length; i++) {
-        soma += parseInt(porcentagens[i].value);
+        soma += parseFloat(porcentagens[i].value);
     }
-    
-    if(soma!=100) {
-        alert("A soma das porcentagens precisa totalizar 100%");
-        soma = 0;
-        var form = document.querySelector('form');
-        form.addEventListener('submit', function(event){
-            event.preventDefault();
-          });
-    } else {
-        soma = 0;
-        return '';
-    }
+
+    $('form').one('submit', function(e) {
+        
+        if(soma==100) {
+            soma = 0;
+            this.submit(); 
+        } else {
+            soma = 0;
+            alert("A soma das porcentagens precisa totalizar 100%");
+            e.preventDefault();
+        }
+        
+    });
+
+
+    // if(soma==100) {
+    //     soma = 0;
+    //     form.addEventListener('submit', function(event){
+    //         event.submitter();
+    //     });
+
+    // } else {
+    //     alert("A soma das porcentagens precisa totalizar 100%");
+    //     soma = 0;    
+    //     form.addEventListener('submit', function(event){
+    //         event.preventDefault();
+    //       });
+    // }
 
 }

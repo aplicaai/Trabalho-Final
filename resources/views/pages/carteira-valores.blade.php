@@ -51,7 +51,7 @@
                         </div>
                         <div class="card-body">
                             <div class="dt-responsive">
-                                <table id="simpletable"
+                                <table id="scr-vtr-dynamic"
                                     class="table table-striped table-bordered nowrap">
                                     <thead>
                                     <tr>
@@ -64,19 +64,19 @@
                                     </thead>
                                     <tbody>
                                         @foreach($acoesEscolhidas as $ae)
+                                            
                                         <tr>
-                                            <!-- <input type="hidden" value=""> -->
                                             <td>{{$ae['symbol']}}</td>
                                             <td>{{$ae['name']}}</td>
                                             <td>{{$ae['company_name']}}</td>
-                                            <td>
-                                                    
+                                            <td>        
                                                 {{$ae['price']}}
                                             </td>
                                             <td>
-                                                <input id="{{$ae['symbol']}}" class='porcentagem' name="{{$ae['symbol']}}" value="0" type="number" max='100' min='1'>
+                                                <input id="{{$ae['symbol']}}" step="0.01" class='porcentagem' name="{{$ae['symbol']}}" value="0" type="number" max='100' min='1'>
                                             </td>
                                         </tr>
+                                        
                                         @endforeach
                                     </tbody>
                                     
