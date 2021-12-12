@@ -13,6 +13,9 @@ class CreateAcaosTable extends Migration
      */
     public function up()
     {
+
+    if(!Schema::hasTable('acaos')) {
+
         Schema::create('acaos', function (Blueprint $table) {
             $table->id();
             $table->string('acao')->nullable();
@@ -21,6 +24,7 @@ class CreateAcaosTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+        }
     }
 
     /**

@@ -13,6 +13,8 @@ class CreateCarteirasTable extends Migration
      */
     public function up()
     {
+
+    if(!Schema::hasTable('carteiras')) {
         Schema::create('carteiras', function (Blueprint $table) {
             $table->id();
             $table->integer('id_usuario');
@@ -20,6 +22,7 @@ class CreateCarteirasTable extends Migration
             $table->float('valor');
             $table->timestamps();
         });
+    }
     }
 
     /**

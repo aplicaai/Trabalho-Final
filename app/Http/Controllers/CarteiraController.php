@@ -65,14 +65,7 @@ class CarteiraController extends Controller
 
         $concatenado = '';
 
-        // for($a=0; $a < 4 ;$a++) {
-        //     for($d=0; $d < count($dados) ;$d++) {
-        //         $concatenado = $concatenado.$dados[$d].',';
-        //         $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol='c$concatenado);
-        //     }
-        //     $ret[] = $resp->json()['results'];
-        //     $concatenado = '';
-        // }
+        
         
         return $ret;
     }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Carteira extends Model
 {
     use HasFactory;
-    protected $table = "Carteiras";
+    protected $table = "carteiras";
     public $timestamps = true;
 
     protected $fillable = ['id_usuario','nome','valor','created_at', 'updated_at','deleted_at'];
