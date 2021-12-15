@@ -59,7 +59,8 @@
                                         <th>Nome</th>
                                         <th>Razão</th>
                                         <th>Preço por ação</th>
-                                        <th>% participação</th>
+                                        <th>Quantidade</th>
+                                        <th>Objetivo</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -72,9 +73,11 @@
                                             <td>        
                                                 {{$ae['price']}}
                                             </td>
+                                            <td><input max='100' min='1' type="number" step="1"></td>
                                             <td>
-                                                <input id="{{$ae['symbol']}}" step="0.01" class='porcentagem' name="{{$ae['symbol']}}" value="0" type="number" max='100' min='1'>
+                                                <input id="{{$ae['symbol']}}" step="0.01" class='porcentagem' name="{{$ae['symbol']}}" value="0" type="number" max='100' min='0'>
                                             </td>
+                                            
                                         </tr>
                                         
                                         @endforeach

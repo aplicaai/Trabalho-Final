@@ -52,7 +52,8 @@
                                         <th class="nosort">Ação</th>
                                         <!-- <th>Nome empresa</th> -->
                                         <th>Preço por ação</th>
-                                        <th>% participação</th>
+                                        <th>Objetivo</th>
+                                        <th>Quantidade</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -66,6 +67,7 @@
                                             <td>
                                                 <input id="{{$a['symbol']}}" value="{{$a['porcentagem']}}" class='porcentagem' name="{{$a['symbol']}}" value="0" type="number" max='100' min='1'>
                                             </td>
+                                            <td><input type="number" step="1" min="0"></td>
                                         </tr>
                                         @endforeach
                                     </tbody>

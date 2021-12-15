@@ -53,9 +53,9 @@
                 <div class="nav-item {{ ($segment1 == 'form-components' || $segment1 == 'form-advance'||$segment1 == 'form-addon') ? 'active open' : '' }} has-sub">
                     <a href="#"><i class="ik ik-edit"></i><span>{{ __('Carteira')}}</span></a>
                     <div class="submenu-content">
-                        <a href="{{url('cadastro-da-carteira')}}" class="menu-item {{ ($segment1 == 'form-components') ? 'active' : '' }}">{{ __('Cadastro')}}</a>
-                        <a href="{{url('listar-carteiras')}}" class="menu-item {{ ($segment1 == 'form-addon') ? 'active' : '' }}">{{ __('Alterar/Listar')}}</a>
-                        <a href="{{url('form-advance')}}" class="menu-item {{ ($segment1 == 'form-advance') ? 'active' : '' }}">{{ __('Advance')}}</a>
+                        <a href="{{url('cadastro-da-carteira')}}" {{ ($segment1 == 'form-components') ? 'active' : '' }}>● {{ __('Cadastro')}}</a>
+                        <a href="{{url('listar-carteiras')}}" {{ ($segment1 == 'form-addon') ? 'active' : '' }}>● {{ __('Alterar/Listar')}}</a>
+                        {{-- <a href="{{url('form-advance')}}" class="menu-item {{ ($segment1 == 'form-advance') ? 'active' : '' }}">{{ __('Advance')}}</a> --}}
                     </div>
                 </div>
                 <!-- <div class="nav-item {{ ($segment1 == 'form-picker') ? 'active' : '' }}">
