@@ -136,7 +136,7 @@
                                                 <span class="custom-control-label">&nbsp;</span>
                                             </label>
                                         </th>
-                                        <th class="nosort">Ação</th>
+                                        <th class="nosort">Ativo</th>
                                         <th>Nome</th>
                                         <th>Razão</th>
                                         <th>Preço por ação</th>

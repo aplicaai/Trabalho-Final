@@ -11,6 +11,6 @@ class Acao_carteira extends Model
     protected $table = "acao_carteiras";
     public $timestamps = true;
 
-    protected $fillable = ['id_usuario', 'id_carteira','acao','valor','porcentagem',
-    'preco_acao','created_at', 'updated_at','deleted_at'];
+    protected $fillable = ['id_usuario', 'id_carteira','ativo','valor','porcentagem_objetivo',
+    'preco_acao','quantidade','setor','created_at', 'updated_at','deleted_at'];
 }

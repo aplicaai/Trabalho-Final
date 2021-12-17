@@ -106,6 +106,7 @@ class CarteiraController extends Controller
     public function carteira_cadastrar() {
 
         $valor = $_POST['acao'];
+        
 
         foreach($valor as $v) {
             $porcentagens[$v] = $_POST[$v];
@@ -113,13 +114,13 @@ class CarteiraController extends Controller
 
         $nome = $_POST['nome'];
         $valor_carteira = $_POST['valor_carteira'];
+        $quantidade = $_POST['quantidade'];
 
         //Busca valores
         $concatenado = '';
         foreach($valor as $v) {
             $concatenado = $concatenado.','.$v;
         }
-
 
         $resp = Http::get('https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol='.$concatenado);
         $ret = $resp->json()['results'];
@@ -138,8 +139,20 @@ class CarteiraController extends Controller
         Carteira::create(['id_usuario'=>Auth::id(),'nome'=>$nome, 'valor'=>$valor_carteira]);
         $id_carteira = Carteira::orderBy('created_at', 'desc')->get('id')->first();
 
+
         foreach($ret as $r) {
-            Acao_carteira::create(['id_usuario'=>Auth::id(), 'id_carteira'=>$id_carteira->id, 'acao'=>$r['symbol'], 'valor'=>$valores_calculados[$r['symbol']], 'porcentagem'=>$porcentagens[$r['symbol']], 'preco_acao'=>$r['price']]);
+            Acao_carteira::create([
+            'id_usuario'=>Auth::id(), 
+            'id_carteira'=>$id_carteira->id, 
+            'ativo'=>$r['symbol'],
+            'valor'=>$valores_calculados[$r['symbol']], 
+            'porcentagem_objetivo'=>$porcentagens[$r['symbol']], 
+            'preco_acao'=>$r['price'],
+            'quantidade'=>$quantidade,
+            'setor'=>$r['description']
+        ]);
+            
+            
         }
 
         return redirect('/dashboard');

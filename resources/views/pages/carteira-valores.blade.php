@@ -55,11 +55,12 @@
                                     class="table table-striped table-bordered nowrap">
                                     <thead>
                                     <tr>
-                                        <th class="nosort">Ação</th>
+                                        <th class="nosort">Ativo</th>
                                         <th>Nome</th>
                                         <th>Razão</th>
                                         <th>Preço por ação</th>
-                                        <th>% participação</th>
+                                        <th>Quantidade</th>
+                                        <th>Objetivo</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -71,6 +72,9 @@
                                             <td>{{$ae['company_name']}}</td>
                                             <td>        
                                                 {{$ae['price']}}
+                                            </td>
+                                            <td>
+                                                <input id="quantidade" class='quantidade' name="quantidade" value="0" type="number" min='1'>
                                             </td>
                                             <td>
                                                 <input id="{{$ae['symbol']}}" step="0.01" class='porcentagem' name="{{$ae['symbol']}}" value="0" type="number" max='100' min='1'>
