@@ -27,7 +27,7 @@
                             <li class="breadcrumb-item">
                                 <a href="#">Tables</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Data Table</li>
+                            <li class="breadcrumb-item active" aria-current="page">Aportes</li>
                         </ol>
                     </nav>
                 </div>
@@ -52,6 +52,7 @@
                                     <tr>
                                         <th>Nome da carteira</th>
                                         <th>Valor carteira</th>
+                                        <th>Aportes</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -63,8 +64,8 @@
                                                 {{$c['valor']}}
                                             </td>
                                             <td>
-                                                <a class="btn btn-light" type="button" href="/alterar-acao/{{$c['id']}}">
-                                                    Alterar
+                                                <a class="btn btn-success" type="button" href="/alterar-acao/{{$c['id']}}">
+                                                    Lançar Aporte
                                                 </a>
                                             </td>
                                         </tr>

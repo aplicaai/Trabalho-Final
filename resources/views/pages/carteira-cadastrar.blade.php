@@ -56,7 +56,7 @@
                         <div class="card-header">
                             <h3>{{ __('Empresas e ações')}}</h3>
                         </div>
-                        <div  class="card-header">
+                        {{-- <div  class="card-header">
                             <!-- <div class="col col-sm-3">
                                 <div class="card-options d-inline-block">
                                     <a href="#"><i class="ik ik-inbox"></i></a>
@@ -124,7 +124,7 @@
                                     <a href="#"><i class="ik ik-chevron-right"></i></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         
                         <div class="card-body">
                             <table id="scr-vtr-dynamic" class="table table-striped table-bordered nowrap">
@@ -138,10 +138,10 @@
                                         </th>
                                         <th class="nosort">Ativo</th>
                                         <th>Nome</th>
-                                        <th>Razão</th>
+                                        <th>Razão Social</th>
                                         <th>Preço por ação</th>
-                                        <th>% participação</th>
-                                        <th>Empresa VS R$</th>
+                                        {{-- <th>% participação</th> --}}
+                                        {{-- <th>Empresa VS R$</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -160,8 +160,8 @@
                                         <td>{{$dado['name']}}</td>
                                         <td>{{ $dado['company_name']}}</td>
                                         <td>R$ {{$dado['price']}}</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
+                                        {{-- <td>2011/04/25</td> --}}
+                                        {{-- <td>$320,800</td> --}}
                                     </tr>
                                     
                                     @endforeach
