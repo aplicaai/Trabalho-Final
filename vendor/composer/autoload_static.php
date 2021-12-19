@@ -728,6 +728,7 @@ class ComposerStaticInit4a07fb3d405c38cfd43752f4a31068b6
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\model\\Acao_carteira' => __DIR__ . '/../..' . '/app/model/Acao_carteira.php',
         'App\\model\\Carteira' => __DIR__ . '/../..' . '/app/model/Carteira.php',
+        'App\\model\\Info_ativo' => __DIR__ . '/../..' . '/app/model/Info_ativo.php',
         'App\\model\\acao' => __DIR__ . '/../..' . '/app/model/acao.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',

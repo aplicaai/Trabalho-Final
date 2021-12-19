@@ -57,20 +57,7 @@
                             <h3>{{ __('Empresas e ações')}}</h3>
                         </div>
                         {{-- <div  class="card-header">
-                            <!-- <div class="col col-sm-3">
-                                <div class="card-options d-inline-block">
-                                    <a href="#"><i class="ik ik-inbox"></i></a>
-                                    <a href="#"><i class="ik ik-plus"></i></a>
-                                    <a href="#"><i class="ik ik-rotate-cw"></i></a>
-                                    <div class="dropdown d-inline-block">
-                                        <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-more-horizontal"></i></a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="moreDropdown">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">More Action</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                           
                             <div class="col col-sm-6">
 
                                 <div class="card-search with-adv-search dropdown">
@@ -145,13 +132,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($dados as $d)
-                                    @foreach($d as $dado)
+                                @foreach($dados as $dado)
+                                    
                                     
                                     <tr>
                                         <td>
                                             <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input select_all_child" id="" name="checkbox[]" value="{{$dado['symbol']}}">
+                                                <input type="checkbox" class="custom-control-input select_all_child" id="" name="checkbox[]" value="{{$dado->symbol}}">
                                                 <span class="custom-control-label">&nbsp;</span>
                                             </label>
                                         </td>
@@ -164,7 +151,7 @@
                                         {{-- <td>$320,800</td> --}}
                                     </tr>
                                     
-                                    @endforeach
+                                    
                                 @endforeach
                                 </tbody>
                             </table>

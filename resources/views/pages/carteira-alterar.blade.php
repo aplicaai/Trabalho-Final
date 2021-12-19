@@ -49,25 +49,68 @@
                                     class="table table-striped table-bordered nowrap">
                                     <thead>
                                     <tr>
-                                        <th class="nosort">Ação</th>
+                                        <th class="nosort">Ativo</th>
                                         <!-- <th>Nome empresa</th> -->
-                                        <th>Preço por ação</th>
-                                        <th>Objetivo</th>
-                                        <th>Quantidade</th>
+                                        
+                                        <th>
+                                            <center>Setor</center>
+                                        </th>
+                                        <th>
+                                            <center>Quantidade</center>
+                                        </th>
+                                        <th>
+                                            <center>Cotação atual</center>
+                                        </th>
+                                        <th>
+                                            <center>Patrimônio atualizado (%)</center>
+                                        </th>
+                                        <th>
+                                            <center>Participação atual (%)</center>
+                                        </th>
+                                        
+                                        <!-- <th>Patrimônio Atualizado</th> -->
+                                        <th>
+                                            <center>Objetivo</center>
+                                        </th>
+                                        <th>
+                                            <center>Distância do objetivo</center>
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($acao_carteiras as $a)
                                         <tr>
                                             <!-- <input type="hidden" value=""> -->
-                                            <td>{{$a['acao']}}</td>
                                             <td>
-                                                {{$a['preco_acao']}}
+                                                <center>{{$a['ativo']}}</center>
+                                            </td>
+                                            
+                                            <td class="w-50 overflow-auto" style="white-space: inherit">     
+                                                <center>{{$a['setor']}}</center>
                                             </td>
                                             <td>
-                                                <input id="{{$a['symbol']}}" value="{{$a['porcentagem']}}" class='porcentagem' name="{{$a['symbol']}}" value="0" type="number" max='100' min='1'>
+                                                <center>{{$a['quantidade']}}</center>
                                             </td>
-                                            <td><input type="number" step="1" min="0"></td>
+                                            <td>
+                                                <div>
+                                                    <center>R$ {{$a['preco_acao']}}</center>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <center>R$ {{$a['patrimonioAtualizado']}}</center>
+                                            </td>
+                                            <td>
+                                                <center>{{$a['participacaoAtual']}}%</center>
+                                            </td>
+                                            <td>
+                                                <center>{{$a['porcentagem_objetivo']}}%</center>
+                                                <!-- <input id="{{$a['symbol']}}" value="{{$a['porcentagem']}}" class='porcentagem' name="{{$a['symbol']}}" value="0" type="number" max='100' min='1'> -->
+                                            </td>
+                                            <td>
+                                                <center>{{$a['porcentagem_objetivo']-$a['participacaoAtual']}}%</center>
+                                                <!-- <input type="number" step="1" min="0"> -->
+                                            </td>
+
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -79,8 +122,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
-                                <button onclick='porcentagem()' type="submit" class="btn btn-primary mr-2">{{ __('Confirmar')}}</button>
-                                <a class="btn btn-light" type="button" href="/dashboard">{{ __('Cancelar')}}</a>
+                                <a class="btn btn-light" type="button" href="/listar-carteiras">{{ __('Voltar')}}</a>
                             </div>
                         </div>    
                     </div>

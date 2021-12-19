@@ -1,4 +1,4 @@
-';@extends('layouts.main') 
+@extends('layouts.main') 
 @section('title', 'Data Tables')
 @section('content')
     <!-- push external head elements to head -->
@@ -73,7 +73,6 @@
                                             <td>        
                                                 {{$ae['price']}}
                                             </td>
-                                            <td><input max='100' min='1' type="number" step="1"></td>
                                             <td>
                                                 <input id="quantidade" class='quantidade' name="quantidade" value="0" type="number" min='1'>
                                             </td>

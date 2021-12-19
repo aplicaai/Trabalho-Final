@@ -41,6 +41,7 @@ return array(
     'App\\User' => $baseDir . '/app/User.php',
     'App\\model\\Acao_carteira' => $baseDir . '/app/model/Acao_carteira.php',
     'App\\model\\Carteira' => $baseDir . '/app/model/Carteira.php',
+    'App\\model\\Info_ativo' => $baseDir . '/app/model/Info_ativo.php',
     'App\\model\\acao' => $baseDir . '/app/model/acao.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',

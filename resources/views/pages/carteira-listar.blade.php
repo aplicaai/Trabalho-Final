@@ -13,8 +13,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-inbox bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Data Table')}}</h5>
-                            <span>{{ __('lorem ipsum dolor sit amet, consectetur adipisicing elit')}}</span>
+                            <h5>{{ __('Carteira')}}</h5>
+                            <span>{{ __('Visualizar Carteiras')}}</span>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                    
                     <div class="card">
                         <div class="card-header d-block">
-                            <h3>{{ __('Zero Configuration')}}</h3>
+                            <h3>{{ __('Lista de Carteiras')}}</h3>
                         </div>
                         <div class="card-body">
                             <div class="dt-responsive">
@@ -52,7 +52,7 @@
                                     <tr>
                                         <th>Nome da carteira</th>
                                         <th>Valor carteira</th>
-                                        <th>Aportes</th>
+                                        <th>Visualizar Ações</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -65,7 +65,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-success" type="button" href="/alterar-acao/{{$c['id']}}">
-                                                    Lançar Aporte
+                                                    Visualizar
                                                 </a>
                                             </td>
                                         </tr>
@@ -79,8 +79,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
-                                <button onclick='porcentagem()' type="submit" class="btn btn-primary mr-2">{{ __('Confirmar')}}</button>
-                                <a class="btn btn-light" type="button" href="/dashboard">{{ __('Cancelar')}}</a>
+                                <a class="btn btn-light" type="button" href="/dashboard">{{ __('Voltar')}}</a>
                             </div>
                         </div>    
                     </div>
