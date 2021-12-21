@@ -13,7 +13,7 @@
                         <i class="ik ik-edit bg-blue"></i>
                         <div class="d-inline">
                             <h5>{{ __('Carteira')}}</h5>
-                            <span>{{ __('Definição da carteira')}}</span>
+                            <span>{{ __('Cadastro de carteira')}}</span>
                         </div>
                     </div>
                 </div>
@@ -25,6 +25,7 @@
                             </li>
                             <!-- <li class="breadcrumb-item"><a href="#">{{ __('Forms')}}</a></li> -->
                             <li class="breadcrumb-item active" aria-current="page">{{ __('Carteira')}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('Cadastro de Carteira')}}</li>
                         </ol>
                     </nav>
                 </div>

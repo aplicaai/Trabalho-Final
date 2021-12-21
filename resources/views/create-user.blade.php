@@ -26,6 +26,9 @@
                                 <a href="{{url('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
+                                {{ __('Usuário')}}
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
                                 <a href="#">{{ __('Adicionar Usuário')}}</a>
                             </li>
                         </ol>

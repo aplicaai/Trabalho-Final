@@ -71,6 +71,7 @@ class CarteiraController extends Controller
     public function alterar($id_carteira) {
 
         $dadosAcao_carteiras = Acao_carteira::all()->where('id_carteira', '=', $id_carteira);
+        $dadosCarteira = Carteira::where('id','=',$id_carteira)->get('nome');
 
         $acao_carteiras = [];
         foreach($dadosAcao_carteiras as $ac) 
@@ -84,8 +85,7 @@ class CarteiraController extends Controller
 
         foreach($acao_carteiras as $ac) 
         {
-            $valorTotal = $valorTotal + $ac->preco_acao*$ac->quantidade;
-            
+            $valorTotal = $valorTotal + $ac->preco_acao*$ac->quantidade;   
         }
 
         foreach($acao_carteiras as $ac)
@@ -97,7 +97,7 @@ class CarteiraController extends Controller
         //dd($acao_carteiras);
 
 
-        return view('pages.carteira-alterar', compact('acao_carteiras'));
+        return view('pages.carteira-alterar', compact('acao_carteiras','dadosCarteira'));
 
     }
 
@@ -214,6 +214,45 @@ class CarteiraController extends Controller
         }
 
         return view('pages.carteira-listar', compact('carteiras', 'dadosCarteiras'));
+    }
+
+
+    public function aporte_listar() 
+    {
+        $dadosCarteiras = Carteira::all()->where('id_usuario', '=', Auth::id());
+        $dadosAcoesCarteira = Acao_carteira::all()->where('id_usuario', '=', Auth::id());
+
+        $carteiras = [];
+        foreach($dadosCarteiras as $dc) {
+           $carteiras[] = $dc;
+        }
+
+        $Acoes_carteiras = [];
+        foreach($dadosAcoesCarteira as $ac) {
+            $acoesCarteiras[] = $ac;
+        }
+
+        return view('pages.carteira-aporte-listar', compact('carteiras', 'dadosCarteiras'));
+    }
+
+    public function definir_aporte($id_carteira){
+        $dadosAcao_carteiras = Acao_carteira::where('id_carteira', '=', $id_carteira)->get();
+        $dadosCarteira = Carteira::where('id','=',$id_carteira)->get('nome');
+
+        $acao_carteiras = [];
+        foreach($dadosAcao_carteiras as $ac) 
+        {
+            $acao_carteiras[] = $ac;
+        }
+
+        // foreach($dadosCarteira as $dc) {
+        //     print_r($dc['nome'].' ');
+        // }
+
+        // exit;
+
+        return view('pages.carteira-aporte', compact('acao_carteiras', 'dadosCarteira'));
+
     }
 
     public function json(Request $request) {

@@ -25,9 +25,9 @@
                                 <a href="{{route('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Carteira</a>
+                                <a href="#">Carteiras</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Visualizar</li>
+                            <li class="breadcrumb-item active" aria-current="page">Aportes</li>
                         </ol>
                     </nav>
                 </div>
@@ -52,7 +52,7 @@
                                     <tr>
                                         <th>Nome da carteira</th>
                                         <th>Valor carteira</th>
-                                        <th>Visualizar Ações</th>
+                                        <th>Definir aporte</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -64,8 +64,8 @@
                                                 {{$c['valor']}}
                                             </td>
                                             <td>
-                                                <a class="btn btn-success" type="button" href="/alterar-acao/{{$c['id']}}">
-                                                    Visualizar
+                                                <a class="btn btn-success" type="button" href="/definir-aporte/{{$c['id']}}">
+                                                    Aporte
                                                 </a>
                                             </td>
                                         </tr>

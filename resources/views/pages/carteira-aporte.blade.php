@@ -14,7 +14,7 @@
                         <i class="ik ik-inbox bg-blue"></i>
                         <div class="d-inline">
                             <h5>{{ __('Carteira')}}</h5>
-                            <span>{{ __('Alterar Carteira')}}</span>
+                            <span>{{ __('Aporte de valores')}}</span>
                         </div>
                     </div>
                 </div>
@@ -27,24 +27,34 @@
                             <li class="breadcrumb-item">
                                 <a href="#">Carteira</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Alterar Carteira</li>
+                            <li class="breadcrumb-item active" aria-current="page">Aporte de valores</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
 
-<!-- ////////////////////////////////////// -->
         <div class="row">
             <div class="col-sm-12">
                 <form class="forms-sample" id="carteira-alterar" method="post" action="{{route('carteira-alterar')}}">
                     @csrf
                     <div class="card">
-                        <div class="card-header d-block ">
+                        <div class="card-header d-block text-secondary">
                             @foreach($dadosCarteira as $ac)
                                 <h3>{{$ac['nome']}}</h3>
                             @endforeach
                         </div>
+
+                        
+                        <div class="card-header d-block">
+                            <p>
+                                <h3 class="text-secondary">
+                                    <b>Adicionar valor à carteira</b>
+                                </h3>
+                            </p>
+                            <input type="number" name="aporte-valor" step="0.01">
+                        </div>
+
                         <div class="card-body">
                             <div class="dt-responsive">
                                 <table id="simpletable"
