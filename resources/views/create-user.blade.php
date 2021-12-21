@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Add User')
+@section('title', 'Novo Usuário')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -51,7 +51,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
 
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="name">{{ __('Nome de usuário')}}<span class="text-red">*</span></label>
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="" placeholder="Enter user name" required>
                                         <div class="help-block with-errors"></div>
@@ -61,13 +61,26 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
+                                    </div> -->
+                                    
                                     <div class="form-group">
-                                        <label for="email">{{ __('Email')}}<span class="text-red">*</span></label>
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter email address" required>
+                                        <label for="email">{{ __('Email Primario')}}<span class="text-red">*</span></label>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Entre com seu Email" required>
                                         <div class="help-block with-errors" ></div>
 
                                         @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email2">{{ __('Email Secundario')}}<span class="text-red">*</span></label>
+                                        <input id="email2" type="email" class="form-control @error('email2') is-invalid @enderror" name="email2" value="{{ old('email2') }}" placeholder="Entre com Email para recuperação" required>
+                                        <div class="help-block with-errors" ></div>
+
+                                        @error('email2')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -87,7 +100,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="password-confirm">{{ __('Confirmar Senha')}}<span class="text-red">*</span></label>
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Retype password" required>
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Repita senha" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                     
@@ -100,7 +113,7 @@
                                     <!-- Assign role & view role permisions -->
                                     <div class="form-group">
                                         <label for="role">{{ __('Atribuir Regra')}}<span class="text-red">*</span></label>
-                                        {!! Form::select('role', $roles, null,[ 'class'=>'form-control select2', 'placeholder' => 'Select Role','id'=> 'role', 'required'=> 'required']) !!}
+                                        {!! Form::select('role', $roles, null,[ 'class'=>'form-control select2', 'placeholder' => 'Selecione a regra','id'=> 'role', 'required'=> 'required']) !!}
                                     </div>
                                     <div class="form-group" >
                                         <label for="role">{{ __('Permissões')}}</label>

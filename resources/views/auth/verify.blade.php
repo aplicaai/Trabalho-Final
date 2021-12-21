@@ -9,27 +9,37 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center" style="font-size: 30px; font-weight:900">{{ __('Cadastro') }}</div>
+                <div class="card-header text-center" style="font-size: 30px; font-weight:900">{{ __('Pré-Cadastro') }}</div>
                 
                 <div class="card-body">
                     @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success text-center" role="alert">
 
-                            {{ __('Um novo link de verificação foi enviado para o seu endereço de e-mail.') }}
+                            {{ __('Um link de verificação foi enviado para o seu endereço de e-mail.') }}
                         </div>
                     @endif
-                    {{Auth::user()->name}},<br><br>
-                    <i class="ik ik-user"></i>{{ __('Sua conta foi criada com sucesso.') }}<br><br>
-                    {{ __('Antes de continuar, por favor, acesse sua caixa de correio eletrônico e confirme seu e-mail.') }}<br><br>
-                    {{ __('Se você não recebeu o email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('clique aqui para solicitar outro') }}</button>.
-                    </form>
+                    <div class="sign-btn text-center mt-4 mb-4">
+                        <!-- {{Auth::user()->name}},<br><br> -->
+                        <i class="ik ik-user"></i>{{ __('Seu pré cadastro foi realizado com sucesso.') }}<br><br>
+                        {{ __('Para concluir seu cadastro, clique em receber o email.') }}<br><br>
+                        {{ __('Acesse sua caixa de correio eletrônico e confirme seu e-mail') }}<br><br><br>
+                        <form class="d-inline text-center" method="POST" action="{{ route('verification.resend') }}">
+                            @csrf
+                            <button type="submit" id="rc" class="btn btn-primary">Receber o Email</button>
+                            <script>
+                                getElementById('rc').disable = true;
+                            </script>
+                        </form>
+                    </div>
                 </div>
-                <div class="sign-btn text-center mt-4 mb-4">
+                <!-- <div class="sign-btn text-center mt-4 mb-4">
                     <a type="button" href="{{url ('/') }}" class="btn btn-custom" >Entrar</a>
-                </div>
+                </div> -->
+                <!-- <script>
+                    setTimeout(function() {
+                    window.location.href = "{{route ('login-send')}}";
+                    }, 5000);
+                </script> -->
             </div>
             
         </div>

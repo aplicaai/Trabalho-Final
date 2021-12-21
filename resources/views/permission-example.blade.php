@@ -120,7 +120,7 @@
                         </div>
                     </div>
                     <div class="card-block">
-                        <p class="mb-0 p-3 ">{{ __('Edit permission will visible only for')}}  <code>Super Admin</code> {{ __('role and')}} <code>manage_sales</code> {{ __('permission')}}</p>
+                        <p class="mb-0 p-3 ">{{ __('Edit permission will visible only for')}}  <code>Analista Master</code> {{ __('role and')}} <code>manage_sales</code> {{ __('permission')}}</p>
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
@@ -284,7 +284,7 @@
                         </div>
                     </div>
                     <div class="card-block">
-                        <p class="mb-0 p-3 ">{{ __('Members performance will visible only for')}}  <code>Super Admin</code> {{ __('role and')}} <code>manage_projects</code> {{ __('permission')}}</p>
+                        <p class="mb-0 p-3 ">{{ __('Members performance will visible only for')}}  <code>Analista Master</code> {{ __('role and')}} <code>manage_projects</code> {{ __('permission')}}</p>
                         <!--start permitted area for manage_sales permission -->
                         @can('manage_projects')
                         <div class="table-responsive">
@@ -603,7 +603,7 @@
                         </div>
                     </div>
                     <div class="card-block">
-                        <p class="mb-0 p-3 ">{{ __('Edit permission will visible only for')}}  <code>Super Admin</code> {{ __('role and')}} <code>manage_sales</code> {{ __('permission')}}</p>
+                        <p class="mb-0 p-3 ">{{ __('Edit permission will visible only for')}}  <code>Analista Master</code> {{ __('role and')}} <code>manage_sales</code> {{ __('permission')}}</p>
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
@@ -801,7 +801,7 @@
                         </div>
                     </div>
                     <div class="card-block">
-                        <p class="mb-0 p-3 ">{{ __('Project task list will visible only for')}}  <code>Super Admin</code> {{ __('role and')}} <code>manage_projects</code> {{ __('permission')}}</p>
+                        <p class="mb-0 p-3 ">{{ __('Project task list will visible only for')}}  <code>Analista Master</code> {{ __('role and')}} <code>manage_projects</code> {{ __('permission')}}</p>
                         <!--start permitted area for manage_sales permission -->
                         @can('manage_projects')
                         <div class="table-responsive">
@@ -985,7 +985,7 @@
                             <li class="d-inline-block"><img src="{{ asset('img/users/2.jpg')}}" alt="user-image" class="rounded-circle img-30 mr-15" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></li>
                         </ul>
                         <hr>
-                        <p class="mb-0">{{ __('Add project button will visible only for')}}  <code>Super Admin</code> {{ __('role and')}} <code>manage_projects</code> {{ __('permission')}}</p>
+                        <p class="mb-0">{{ __('Add project button will visible only for')}}  <code>Analista Master</code> {{ __('role and')}} <code>manage_projects</code> {{ __('permission')}}</p>
                         <!--start permitted area for manage_sales permission -->
                         @can('manage_projects')
                         <div class="right-icon-control m-t-15">
@@ -1015,7 +1015,7 @@
                         </div>
                     </div>
                     <div class="card-block">
-                        <p class="mb-0 p-3">{{ __('Testimonial will visible only for')}}  <code>Super Admin</code> {{ __('role and')}} <code>manage_projects</code> {{ __('permission')}}</p>
+                        <p class="mb-0 p-3">{{ __('Testimonial will visible only for')}}  <code>Analista Master</code> {{ __('role and')}} <code>manage_projects</code> {{ __('permission')}}</p>
                         <!--start permitted area for manage_sales permission -->
                         @can('manage_projects')
                         <div class="review-block">
@@ -1094,7 +1094,7 @@
                         </div>
                     </div>
                     <div class="card-block p-b-0">
-                        <p class="mb-0 p-3">{{ __('Sales report will visible only for')}}  <code>Super Admin</code> {{ __('role and')}} <code>manage_sales</code> {{ __('permission')}}</p>
+                        <p class="mb-0 p-3">{{ __('Sales report will visible only for')}}  <code>Analista Master</code> {{ __('role and')}} <code>manage_sales</code> {{ __('permission')}}</p>
                         <!--start permitted area for manage_sales permission -->
                         @can('manage_sales')
                         <div class="table-responsive">
@@ -1170,7 +1170,7 @@
                         </div>
                         @endcan
                     </div>
-                    <p class="mb-0 p-3">{{ __('View all Sales url will visible only for')}}  <code>Super Admin</code> {{ __('role and')}} <code>manage_sales</code> {{ __('permission')}}</p>
+                    <p class="mb-0 p-3">{{ __('View all Sales url will visible only for')}}  <code>Analista Master</code> {{ __('role and')}} <code>manage_sales</code> {{ __('permission')}}</p>
                     <!--start permitted area for manage_sales permission -->
                     @can('manage_sales')
                     <div class="card-footer">

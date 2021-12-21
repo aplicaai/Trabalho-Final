@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Edit User')}}</h5>
-                            <span>{{ __('Create new user, assign roles & permissions')}}</span>
+                            <h5>{{ __('Editar Usuário')}}</h5>
+                            <span>{{ __('Editar atribuições de usuários')}}</span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 <a href="{{url('/')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('User')}}</a>
+                                <a href="#">{{ __('Usuários')}}</a>
                             </li>
                             <li class="breadcrumb-item">
                                 <!-- clean unescaped data is to avoid potential XSS risk -->
@@ -52,7 +52,7 @@
                                 <div class="col-sm-6">
 
                                     <div class="form-group">
-                                        <label for="name">{{ __('Username')}}<span class="text-red">*</span></label>
+                                        <label for="name">{{ __('Nome usuário')}}<span class="text-red">*</span></label>
                                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ clean($user->name, 'titles')}}" required>
                                         <div class="help-block with-errors"></div>
 
@@ -76,7 +76,7 @@
 
                                    
                                     <div class="form-group">
-                                        <label for="password">{{ __('Password')}}</label>
+                                        <label for="password">{{ __('Senha')}}</label>
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  >
                                         <div class="help-block with-errors"></div>
 
@@ -87,7 +87,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="password-confirm">{{ __('Confirm Password')}}</label>
+                                        <label for="password-confirm">{{ __('Confirmar senha')}}</label>
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -100,11 +100,11 @@
                                 <div class="col-md-6">
                                     <!-- Assign role & view role permisions -->
                                     <div class="form-group">
-                                        <label for="role">{{ __('Assign Role')}}<span class="text-red">*</span></label>
+                                        <label for="role">{{ __('Mudar regra')}}<span class="text-red">*</span></label>
                                         {!! Form::select('role', $roles, $user_role->id??'' ,[ 'class'=>'form-control select2', 'placeholder' => 'Select Role','id'=> 'role', 'required'=>'required']) !!}
                                     </div>
                                     <div class="form-group">
-                                        <label for="role">{{ __('Permissions')}}</label>
+                                        <label for="role">{{ __('Permissões')}}</label>
                                         <div id="permission" class="form-group">
                                             @foreach($user->getAllPermissions() as $key => $permission) 
                                             <span class="badge badge-dark m-1">
@@ -118,7 +118,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary form-control-right">{{ __('Update')}}</button>
+                                        <button type="submit" class="btn btn-primary form-control-right">{{ __('Atualizar')}}</button>
                                     </div>
                                 </div>
                             </div>

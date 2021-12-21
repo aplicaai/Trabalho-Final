@@ -42,9 +42,9 @@
 	                    <table id="roles_table" class="table">
 	                        <thead>
 	                            <tr>
-	                                <th>{{ __('Role')}}</th>
-	                                <th>{{ __('Permissions')}}</th>
-	                                <th>{{ __('Action')}}</th>
+	                                <th>{{ __('Regra')}}</th>
+	                                <th>{{ __('Permissões')}}</th>
+	                                <th>{{ __('Ações')}}</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>

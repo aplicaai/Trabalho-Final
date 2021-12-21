@@ -58,7 +58,7 @@ class UserController extends Controller
                     return $badges;
                 })
                 ->addColumn('action', function($data){
-                    if($data->name == 'Super Admin'){
+                    if($data->name == 'Analista Master'){
                         return '';
                     }
                     if (Auth::user()->can('manage_user')){
@@ -92,9 +92,8 @@ class UserController extends Controller
     {
         // create user 
         $validator = Validator::make($request->all(), [
-            'name'     => 'required | string ',
+            // 'name'     => 'required | string ',
             'email'    => 'required | email | unique:users',
-            'password' => 'required | confirmed',
             'role'     => 'required'
         ]);
         
@@ -105,9 +104,49 @@ class UserController extends Controller
         {
             // store user information
             $user = User::create([
-                        'name'     => $request->name,
+                        // 'name'     => $request->name,
                         'email'    => $request->email,
+                        
                         'password' => Hash::make($request->password),
+                    ]);
+
+            // assign new role to the user
+            $user->syncRoles($request->role);
+
+            if($user){ 
+                return redirect('users')->with('success', 'New user created!');
+            }else{
+                return redirect('users')->with('error', 'Failed to create new user! Try again.');
+            }
+        }catch (\Exception $e) {
+            $bug = $e->getMessage();
+            return redirect()->back()->with('error', $bug);
+        }
+    }
+
+    public function store2(Request $request)
+    {
+        // create user 
+        $validator = Validator::make($request->all(), [
+            // 'name'     => 'required | string ',
+            // 'email'    => 'required | email | unique:users',
+            // 'role'     => 'required'
+        ]);
+        
+        if($validator->fails()) {
+            return redirect()->back()->withInput()->with('error', $validator->messages()->first());
+        }
+        try
+        {
+            // store user information
+            $user = User::create([
+                        // 'name'     => $request->name,
+                        'name'      => $request['name'],
+                        'sobrenome' => $request['sobrenome'],
+                        'endereco'  => $request['endereco'],
+                        'telefone'  => $request['telefone'],
+                        'rg'        => $request['rg'],
+                        'cpf'       => $request['cpf']
                     ]);
 
             // assign new role to the user
@@ -194,6 +233,10 @@ class UserController extends Controller
         }
     }
 
+    public function conclui()
+    {
+        return view('pages.conclui-cadastro');
+    }
 
     public function delete($id)
     {

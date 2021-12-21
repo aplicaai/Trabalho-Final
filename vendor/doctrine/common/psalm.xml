@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <psalm
+<<<<<<< HEAD:vendor/doctrine/common/psalm.xml
     errorLevel="8"
     resolveFromConfigFile="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -9,6 +10,17 @@
 >
     <projectFiles>
         <directory name="lib/Doctrine/Common" />
+=======
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    resolveFromConfigFile="false"
+    totallyTyped="false"
+    errorBaseline=".psalm/baseline.xml"
+>
+    <projectFiles>
+        <directory name="src" />
+>>>>>>> dev_rafael:vendor/phpunit/php-file-iterator/.psalm/config.xml
         <ignoreFiles>
             <directory name="vendor" />
         </ignoreFiles>

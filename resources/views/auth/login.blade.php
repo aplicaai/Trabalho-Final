@@ -82,9 +82,9 @@
                                 <div class="sign-btn text-center">
                                     <button class="btn btn-custom">Entrar</button>
                                 </div>
-                                <div class="register">
+                                <!-- <div class="register">
                                     <p>{{ __('Não é cadastrado?')}} <a href="{{url('register')}}"><span style="color: blue;">{{ __('Cadastrar-se')}}</span></a></p>
-                                </div>
+                                </div> -->
                                 
                             </form>
                         </div>

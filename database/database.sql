@@ -149,7 +149,7 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'web', '2020-03-10 11:40:47', '2020-03-10 11:40:47'),
+(1, 'Analista Master', 'web', '2020-03-10 11:40:47', '2020-03-10 11:40:47'),
 (2, 'Admin', 'web', '2020-03-10 12:39:23', '2020-03-10 12:39:23'),
 (3, 'Project Manager', 'web', '2020-03-12 12:11:50', '2020-03-12 12:11:50'),
 (4, 'Sales Manager', 'web', '2020-03-12 12:12:07', '2020-03-12 12:12:07');
@@ -198,7 +198,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'admin@test.com', NULL, '$2y$10$uZDwEdgAzi3wD4n8oBYfruvBmZJqVV7sSasFRZzlz5Wkqs0EyqiDe', NULL, NULL, '2020-03-12 12:28:44'),
+(1, 'Analista Master', 'admin@test.com', NULL, '$2y$10$uZDwEdgAzi3wD4n8oBYfruvBmZJqVV7sSasFRZzlz5Wkqs0EyqiDe', NULL, NULL, '2020-03-12 12:28:44'),
 (2, 'Project Manager', 'pm@test.com', NULL, '$2y$10$rm0yp.fuqPZevIkxlActtuBpMuTHLGwPRYFaNlA5TToZZqx.i7Tra', NULL, '2020-03-12 12:18:59', '2020-03-12 12:18:59'),
 (3, 'Sales Manager', 'sm@test.com', NULL, '$2y$10$40lQm5lnWgtElBwnko7ASuUr.Obu2CI.hPecZ8ZciGsYKkXw2Kf3.', NULL, '2020-03-12 12:20:15', '2020-03-12 12:20:15'),
 (4, 'HR', 'hr@test.com', NULL, '$2y$10$sFgFRrOZS4mzhRlAHbDIie.Kz.G3YSIYynnmcljjxVzyl0gkMQT6a', NULL, '2020-03-12 12:25:25', '2020-03-12 12:25:25');

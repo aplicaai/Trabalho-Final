@@ -13,7 +13,7 @@ class CreateAcaoCarteirasTable extends Migration
      */
     public function up()
     {
-    if(!Schema::hasTable('acao_carteiras')) {
+    if (!Schema::hasTable('acao_carteiras')) {
         Schema::create('acao_carteiras', function (Blueprint $table) {
             $table->id();
             $table->integer('id_usuario');
@@ -24,6 +24,7 @@ class CreateAcaoCarteirasTable extends Migration
             $table->float('preco_acao');
             $table->timestamps();
         });
+        }
     }
     }
 
