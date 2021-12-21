@@ -63,9 +63,9 @@
                                     <button class="btn btn-theme">{{ __('Enviar') }}</button>
                                 </div>
                             </form>
-                            <div class="register">
+                            <!-- <div class="register">
                                 <p>{{ __('não tem cadastro') }}? <a href="{{ url('register')}}"><span style="color: blue;">{{ __('Criar uma conta') }}</span></a></p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

@@ -139,8 +139,8 @@ class PermissionController extends Controller
             }
         }
 
-        if($role->name == 'Super Admin'){
-            $badges = 'Super Admin has all the permissions!';
+        if($role->name == 'Analista Master'){
+            $badges = 'Analista Master has all the permissions!';
         }
 
         return $badges;

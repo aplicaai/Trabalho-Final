@@ -256,7 +256,7 @@
   display: block;
 }
 .wrapper .page-wrap .app-sidebar .sidebar-content .nav-container .navigation-main .nav-item.has-sub .submenu-content .menu-item:after {
-    content: '--';
+    content: '•';
     position: absolute;
     left: 29px;
 }

@@ -40,7 +40,7 @@ Route::post('register', [RegisterController::class,'register']);
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
-    return view('auth.verify');
+    return view('pages.register');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
@@ -52,8 +52,12 @@ Route::get('password/reset/{token}', [ResetPasswordController::class,'showResetF
 Route::post('password/reset', [ResetPasswordController::class,'reset'])->name('password.update');
 
 Route::get('/email/verify', function () {
-	return redirect('/');
+	return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
+
+// Route::get('/users/create2', function () {
+// 	return view('pages.conclui-cadastro');
+// })->middleware('cadastro')->name('concluir');
 
 Route::group(['middleware' => 'auth'], function(){
 	// logout route
@@ -74,7 +78,9 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/users', [UserController::class,'index']);
 	Route::get('/user/get-list', [UserController::class,'getUserList']);
 		Route::get('/user/create', [UserController::class,'create']);
+		// Route::get('/user/create2', [UserController::class,'conclui'])->name('concluir');
 		Route::post('/user/create', [UserController::class,'store'])->name('create-user');
+		// Route::post('/user/create2', [UserController::class,'store2'])->name('create-user2');
 		Route::get('/user/{id}', [UserController::class,'edit']);
 		Route::post('/user/update', [UserController::class,'update']);
 		Route::get('/user/delete/{id}', [UserController::class,'delete']);

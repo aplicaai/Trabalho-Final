@@ -29,11 +29,11 @@ class AuthServiceProvider extends ServiceProvider
         // initialize passport routes
         Passport::routes();
 
-        // super admin get all the access
-        // Implicitly grant "Super Admin" role all permissions
+        // Analista Master get all the access
+        // Implicitly grant "Analista Master" role all permissions
         // This works in the app by using gate-related functions like auth()->user->can() and @can()
         Gate::before(function ($user, $ability) {
-            return $user->hasRole('Super Admin') ? true : null;
+            return $user->hasRole('Analista Master') ? true : null;
         });
     }
 }

@@ -25,8 +25,8 @@
                     <div class="submenu-content">
                         <!-- only those have manage_user permission will get access -->
                         @can('manage_user')
-                        <a href="{{url('users')}}" class="menu-item {{ ($segment1 == 'users') ? 'active' : '' }}">{{ __('Users')}}</a>
-                        <a href="{{url('user/create')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Add User')}}</a>
+                        <a href="{{url('users')}}" class="menu-item {{ ($segment1 == 'users') ? 'active' : '' }}">{{ __('Usuários')}}</a>
+                        <a href="{{url('user/create')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Cadastrar Usuário')}}</a>
                          @endcan
                          <!-- only those have manage_role permission will get access -->
                         @can('manage_roles')
@@ -36,6 +36,9 @@
                         @can('manage_permission')
                         <a href="{{url('permission')}}" class="menu-item {{ ($segment1 == 'permission') ? 'active' : '' }}">{{ __('Permission')}}</a>
                         @endcan
+                        <!-- @can('manage_permission')
+                        <a href="{{url('register')}}" class="menu-item {{ ($segment1 == 'permission') ? 'active' : '' }}">{{ __('Pré Cadastrar Clientes')}}</a>
+                        @endcan -->
                     </div>
                 </div>
                 <!-- <div class="nav-lavel">{{ __('Documentation')}} </div>

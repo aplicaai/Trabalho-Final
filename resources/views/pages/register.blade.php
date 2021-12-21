@@ -53,19 +53,20 @@
                             <div class="logo-centered">
                                 
                                 <a href=""><img width="200" src="{{ asset('img/Sem Titulo-1.png') }}" alt="logo"></a>
-                                <p>{{ __('Cadastre-se para ter acesso aos nossos serviços!')}}</p>
+                                <p>{{ __('Pré cadastro de Clientes')}}</p>
                             </div>
                             
-                            <form action="{{url('register')}}" method="post">
+                            <form action="{{route('create-user2')}}" method="post">
                                 @csrf
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <input type="name" class="form-control" placeholder="Nome" name="name" value="{{ old('name') }}" required>
                                     <i class="ik ik-user"></i>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}" required>
+                                    <input type="email" class="form-control" placeholder="Email Primário" name="email" value="{{ old('email') }}" required>
                                     <i class="fa fa-envelope"></i>
                                 </div>
+                                
                                 <div class="form-group">
                                     <input type="password" class="form-control" placeholder="Senha" name="password" required>
                                     <i class="ik ik-lock"></i>
@@ -81,14 +82,42 @@
                                             <span class="custom-control-label">&nbsp;{{ __('Eu aceito os')}} <a href="#">{{ __('Termos e Condições')}}</a></span>
                                         </label>
                                     </div>
+                                </div> -->
+                                <div class="form-group">
+                                    <input type="name" class="form-control" placeholder="Nome" name="name" value="{{ old('name') }}" required>
+                                    <i class="ik ik-user"></i>
                                 </div>
+                                <div class="form-group">
+                                    <input type="name" class="form-control" placeholder="Sobrenome" name="sobrenome" value="{{ old('sobrenome') }}" required>
+                                    <i class="ik ik-user"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input type="name" class="form-control" placeholder="Endereço" name="endereco" value="{{ old('endereco') }}" required>
+                                    <i class="ik ik-user"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input type="telefone" class="form-control" placeholder="Telefone" name="telefone" value="{{ old('telefone') }}" required>
+                                    <i class="ik ik-user"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input type="name" class="form-control" placeholder="RG" name="rg" value="{{ old('rg') }}" required>
+                                    <i class="ik ik-user"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input type="name" class="form-control" placeholder="CPF" name="cpf" value="{{ old('cpf') }}" required>
+                                    <i class="ik ik-user"></i>
+                                </div>
+
                                 <div class="sign-btn text-center">
-                                    <button class="btn btn-theme">{{ __('Criar Conta')}}</button>
+                                    <button class="btn btn-primary">{{ __('Concluir cadastro')}}</button>
                                 </div>
+                                <!-- <div class="sign-btn text-center">
+                                    <button class="btn btn-primary">{{ __('Pré cadastrar')}}</button>
+                                </div> -->
                             </form>
-                            <div class="register">
+                            <!-- <div class="register">
                                 <p>{{ __('Já possui cadastro?')}} <a href="{{url('login')}}"><span style="color: blue;">{{ __('Entrar')}}</span></a></p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

@@ -39,10 +39,10 @@
                     <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
                         <div class="authentication-form mx-auto">
                             <div class="logo-centered">
-                                <a href=""><img width="150"  src="{{ asset('img/logo.png')}}" alt=""></a>
+                                <a href=""><img width="150"  src="{{ asset('img/Sem Titulo-1.png')}}" alt=""></a>
                             </div>
                             <h3>{{ __('Reset Password') }}</h3>
-                            <p>{{ __('Enter your new password.') }}</p>
+                            <p>{{ __('Entre com sua nova senha.') }}</p>
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">
                                     {{ session('status') }}
@@ -52,7 +52,7 @@
                                 <input type="hidden" name="token" value="{{ $token }}">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Your email address" name="email" value="{{ old('email') }}" required>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Seu endereço de Email" name="email" value="{{ old('email') }}" required>
                                     <i class="ik ik-mail"></i>
                                 </div>
                                 @error('email')
@@ -61,7 +61,7 @@
                                     </span>
                                 @enderror
                                 <div class="form-group">
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required>
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Senha" name="password" required>
                                     <i class="ik ik-lock"></i>
                                 </div>
                                 @error('password')
@@ -70,16 +70,16 @@
                                     </span>
                                 @enderror
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
+                                    <input type="password" class="form-control" placeholder="Confirmar senha" name="password_confirmation" required>
                                     <i class="ik ik-eye-off"></i>
                                 </div>
                                 <div class="sign-btn text-center">
-                                    <button class="btn btn-theme">{{ __('Submit') }}</button>
+                                    <button class="btn btn-theme">{{ __('Atualizar') }}</button>
                                 </div>
                             </form>
-                            <div class="register">
+                            <!-- <div class="register">
                                 <p>{{ __('Not a member') }}? <a href="{{ url('register')}}">{{ __('Create an account') }}</a></p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
