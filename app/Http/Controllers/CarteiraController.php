@@ -22,7 +22,7 @@ class CarteiraController extends Controller
 
     public function atualizar_dados() 
     {
-        $allDadosAcao = acao::limit(700)->get();
+        $allDadosAcao = acao::get();
         $allDadosInfo = Info_ativo::all('name');
 
         $dados = [];
