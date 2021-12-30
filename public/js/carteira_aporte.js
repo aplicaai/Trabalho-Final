@@ -23,7 +23,7 @@ function aporte() {
 
     for(var i = 0; i < dist_obj.length; i++) 
     {
-        arr_quantidade.push(parseFloat(quantidade[i].textContent));
+        arr_quantidade.push(parseFloat(quantidade[i].value));
         arr_preco_acao.push(parseFloat(preco_acao[i].textContent));
         arr_dist_obj.push(parseFloat(dist_obj[i].textContent));
         arr_dist_porc.push(parseFloat(dist_porc[i].textContent));
