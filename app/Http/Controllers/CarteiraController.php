@@ -91,7 +91,14 @@ class CarteiraController extends Controller
         foreach($acao_carteiras as $ac)
         {
             $ac['patrimonioAtualizado'] = $ac->quantidade*$ac->preco_acao;
-            $ac['participacaoAtual'] = round(($ac['patrimonioAtualizado']*100)/$valorTotal,2);
+            if($ac['patrimonioAtualizado']!=0) 
+            {
+                $ac['participacaoAtual'] = round(($ac['patrimonioAtualizado']*100)/$valorTotal,2);
+            }
+            else
+            {
+                $ac['participacaoAtual'] = 0;
+            }
         }
 
         //dd($acao_carteiras);
@@ -197,7 +204,6 @@ class CarteiraController extends Controller
         return redirect('/dashboard');
     }
 
-
     public function listar() {
 
         $dadosCarteiras = Carteira::all()->where('id_usuario', '=', Auth::id());
@@ -236,8 +242,14 @@ class CarteiraController extends Controller
     }
 
     public function definir_aporte($id_carteira){
+
+        $valorTotal = 0;
+
         $dadosAcao_carteiras = Acao_carteira::where('id_carteira', '=', $id_carteira)->get();
         $dadosCarteira = Carteira::where('id','=',$id_carteira)->get('nome');
+
+        $arr_id_carteira = [];
+        array_push($arr_id_carteira, $id_carteira);
 
         $acao_carteiras = [];
         foreach($dadosAcao_carteiras as $ac) 
@@ -245,15 +257,53 @@ class CarteiraController extends Controller
             $acao_carteiras[] = $ac;
         }
 
-        // foreach($dadosCarteira as $dc) {
-        //     print_r($dc['nome'].' ');
-        // }
+        foreach($acao_carteiras as $ac) 
+        {
+            $valorTotal = $valorTotal + $ac->preco_acao*$ac->quantidade;   
+        }
 
-        // exit;
-
-        return view('pages.carteira-aporte', compact('acao_carteiras', 'dadosCarteira'));
+        foreach($acao_carteiras as $ac)
+        {
+            $ac['patrimonioAtualizado'] = $ac->quantidade*$ac->preco_acao;
+            if($ac['patrimonioAtualizado']!=0)
+            {
+                $ac['participacaoAtual'] = round(($ac['patrimonioAtualizado']*100)/$valorTotal,2);
+            }
+            else
+            {
+                $ac['participacaoAtual'] = 0;
+            }
+        }
+        
+        return view('pages.carteira-aporte', compact('acao_carteiras', 'dadosCarteira', 'arr_id_carteira'));
 
     }
+
+    public function carteira_add() 
+    {
+        $id = $_POST['id_carteira'];
+        $ativos = $_POST['ativos'];
+        $quantidades = [];
+
+
+        $var = 0;
+        foreach($ativos as $ativo)
+        {
+            $quantidades[$ativo] = $_POST['quantidade'][$var];
+            $var += 1;
+        }
+
+        $carteira_up = [];
+        foreach($ativos as $ativo)
+        {
+            $dados = Acao_carteira::where('id_carteira', $id)->where('ativo', $ativo)->get()->first();
+            //dd($dados);
+            $dados->update(['quantidade' => $quantidades[$ativo]]);
+        }
+        
+        return redirect('/carteira-aporte-listar');
+    }
+
 
     public function json(Request $request) {
         // dd($request->all());

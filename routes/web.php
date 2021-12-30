@@ -125,7 +125,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/definir-aporte/{id}',[CarteiraController::class, 'definir_aporte'])->name('definir-aporte');
 
 
-	Route::post('/carteira-alterar', [CarteiraController::class, 'carteira_alterar'])->name('carteira-alterar');
+	Route::post('/carteira-add-quantidade', [CarteiraController::class, 'carteira_add'])->name('carteira-add-quantidade');
 	Route::post('/valores-da-carteira', [CarteiraController::class, 'carteira_valores'])->name('carteira-valores');
 	Route::post('/carteira-cadastrar', [CarteiraController::class, 'carteira_cadastrar'])->name('carteira-cadastrar');
 	Route::post('/lista-acoes', [CarteiraController::class, 'lista_acoes'])->name('lista-acoes');

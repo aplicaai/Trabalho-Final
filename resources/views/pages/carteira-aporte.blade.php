@@ -36,8 +36,11 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <form class="forms-sample" id="carteira-alterar" method="post" action="{{route('carteira-alterar')}}">
+                <form class="forms-sample" id="carteira-alterar" method="post" action="{{route('carteira-add-quantidade')}}">
                     @csrf
+                    @foreach($arr_id_carteira as $a)
+                        <input type="hidden" name="id_carteira" value="{{$a}}">
+                    @endforeach
                     <div class="card">
                         <div class="card-header d-block text-secondary">
                             @foreach($dadosCarteira as $ac)
@@ -52,7 +55,10 @@
                                     <b>Adicionar valor à carteira</b>
                                 </h3>
                             </p>
-                            <input type="number" name="aporte-valor" step="0.01">
+                            <div class="row">
+                                <input type="number" id="btnAporte-valor" name="aporte-valor" step="0.01">
+                                <a class="btn btn-success" onclick="aporte()" id="adicionar_valor">Adicionar</a>
+                            </div>
                         </div>
 
                         <div class="card-body">
@@ -61,7 +67,9 @@
                                     class="table table-striped table-bordered nowrap">
                                     <thead>
                                     <tr>
-                                        <th class="nosort">Ativo</th>
+                                        <th class="nosort">
+                                            <center>Ativo</center>
+                                        </th>
                                         <!-- <th>Nome empresa</th> -->
                                         
                                         <th>
@@ -71,58 +79,81 @@
                                             <center>Quantidade</center>
                                         </th>
                                         <th>
-                                            <center>Cotação atual</center>
+                                            <center>Cotação<br> atual</center>
                                         </th>
                                         <th>
-                                            <center>Patrimônio atualizado (%)</center>
+                                            <center>Patrimônio<br> atualizado (%)</center>
                                         </th>
                                         <th>
-                                            <center>Participação atual (%)</center>
+                                            <center>Participação<br> atual (%)</center>
                                         </th>
                                         
                                         <!-- <th>Patrimônio Atualizado</th> -->
                                         <th>
-                                            <center>Objetivo</center>
+                                            <center>Objetivo (%)</center>
                                         </th>
                                         <th>
-                                            <center>Distância do objetivo</center>
+                                            <center>Distância do <br>objetivo (%)</center>
+                                        </th>
+                                        <th>
+                                            <center>Quantas ações <br>comprar?</center>
                                         </th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="valores">
                                         @foreach($acao_carteiras as $a)
                                         <tr>
                                             <!-- <input type="hidden" value=""> -->
                                             <td>
-                                                <center>{{$a['ativo']}}</center>
+                                                <center>
+                                                    <input type="hidden" name="ativos[]" value="{{$a['ativo']}}">
+                                                    <div class="ativo"  value="{{$a['ativo']}}">{{$a['ativo']}}</div>
+                                                </center>
                                             </td>
                                             
                                             <td class="w-50 overflow-auto" style="white-space: inherit">     
                                                 <center>{{$a['setor']}}</center>
                                             </td>
                                             <td>
-                                                <center>{{$a['quantidade']}}</center>
+                                                <center>
+                                                    <div >
+                                                        <!-- <input class="quantidade" style="width:70%" name="quantidade[]" type="number" step="0.01" max='100' min='0' value="{{$a['quantidade']}}"> -->
+                                                        <div class="quantidade" value="{{$a['quantiade']}}">{{$a['quantidade']}}</div>
+                                                    </div>
+                                                </center>
                                             </td>
                                             <td>
                                                 <div>
-                                                    <center>R$ {{$a['preco_acao']}}</center>
+                                                    <center>
+                                                        <div>
+                                                            R$ <span class="preco_acao">{{$a['preco_acao']}}</span>
+                                                        </div>
+                                                    </center>
                                                 </div>
                                             </td>
                                             <td>
                                                 <center>R$ {{$a['patrimonioAtualizado']}}</center>
                                             </td>
                                             <td>
-                                                <center>{{$a['participacaoAtual']}}%</center>
+                                                <center>{{$a['participacaoAtual']}} %</center>
                                             </td>
                                             <td>
-                                                <center>{{$a['porcentagem_objetivo']}}%</center>
-                                                <!-- <input id="{{$a['symbol']}}" value="{{$a['porcentagem']}}" class='porcentagem' name="{{$a['symbol']}}" value="0" type="number" max='100' min='1'> -->
+                                                <center>
+                                                    <div class="porcen_obj" >{{$a['porcentagem_objetivo']}} %</div>
+                                                </center>
                                             </td>
                                             <td>
-                                                <center>{{$a['porcentagem_objetivo']-$a['participacaoAtual']}}%</center>
-                                                <!-- <input type="number" step="1" min="0"> -->
+                                                <center>
+                                                    <div class="porcen_distancia">{{$a['porcentagem_objetivo']-$a['participacaoAtual']}} %</div>
+                                                </center>
                                             </td>
-
+                                            <td>
+                                                <center>
+                                                    <div id="{{$a['ativo']}}">
+                                                        
+                                                    </div>
+                                                </center>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -133,6 +164,9 @@
                     </div>  
                     <div class="row">
                         <div class="col-sm-12">
+                            <!-- <div class="card">
+                                <button  type="submit" class="btn btn-blue" >Adicionar</button>
+                            </div> -->
                             <div class="card">
                                 <a class="btn btn-light" type="button" href="/listar-carteiras">{{ __('Voltar')}}</a>
                             </div>
@@ -150,6 +184,7 @@
         <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
         <script src="{{ asset('js/datatables.js') }}"></script>
         <script src="{{ asset('js/porcentagem.js')}}"></script>
+        <script src="{{ asset('js/carteira_aporte.js')}}"></script>
     @endpush
 @endsection
       
