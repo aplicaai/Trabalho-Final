@@ -1,4 +1,4 @@
-';@extends('layouts.main') 
+'@extends('layouts.main') 
 @section('title', 'Data Tables')
 @section('content')
     <!-- push external head elements to head -->
@@ -36,93 +36,93 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <form class="forms-sample" id="carteira-alterar" method="post" action="{{route('carteira-alterar')}}">
-                    @csrf
+                <form action="{{route('conf-com-ven')}}" id="conf-com-ven" class="forms-sample" method="post">
+                    @csrf    
                     <div class="card">
-                        <div class="card-header d-block text-secondary">
-                            @foreach($dadosCarteira as $ac)
-                                <h3>{{$ac['nome']}}</h3>
-                            @endforeach
-                        </div>
-
-                        
-                        <div class="card-header d-block">
-                            <p>
-                                <h3 class="text-secondary">
-                                    <b>Adicionar valor à carteira</b>
-                                </h3>
-                            </p>
-                            <input type="number" name="aporte-valor" step="0.01">
-                        </div>
-
                         <div class="card-body">
                             <div class="dt-responsive">
                                 <table id="simpletable"
                                     class="table table-striped table-bordered nowrap">
                                     <thead>
                                     <tr>
-                                        <th class="nosort">Ativo</th>
-                                        <!-- <th>Nome empresa</th> -->
-                                        
+                                        <th class="nosort">
+                                            <center>Ativo</center>
+                                        </th>
                                         <th>
                                             <center>Setor</center>
                                         </th>
                                         <th>
-                                            <center>Quantidade</center>
+                                            <center>Quantidade atual</center>
                                         </th>
                                         <th>
-                                            <center>Cotação atual</center>
+                                            <center>Cotação<br> atual</center>
                                         </th>
                                         <th>
-                                            <center>Patrimônio atualizado (%)</center>
+                                            <center>Patrimônio<br> atual</center>
                                         </th>
                                         <th>
-                                            <center>Participação atual (%)</center>
-                                        </th>
-                                        
-                                        <!-- <th>Patrimônio Atualizado</th> -->
+                                           <center>Comprar / Vender</center>
+                                       </th>
                                         <th>
-                                            <center>Objetivo</center>
-                                        </th>
-                                        <th>
-                                            <center>Distância do objetivo</center>
-                                        </th>
+                                            <center>Quantidade<br> vender / adicionar</center>
+                                       </th>
+                                       <th>
+                                           Patrimônio adicionado
+                                       </th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="valores">
                                         @foreach($acao_carteiras as $a)
+                                       
                                         <tr>
-                                            <!-- <input type="hidden" value=""> -->
                                             <td>
-                                                <center>{{$a['ativo']}}</center>
+                                                <center>
+                                                    <input type="hidden" name="qualquernome[]" value="{{$a->id}}">
+                                                    <input type="hidden" name="ativos[]" value="{{$a['ativo']}}">
+                                                    <div class="ativo"  value="{{$a['ativo']}}">{{$a['ativo']}}</div>
+                                                </center>
                                             </td>
                                             
                                             <td class="w-50 overflow-auto" style="white-space: inherit">     
                                                 <center>{{$a['setor']}}</center>
                                             </td>
                                             <td>
-                                                <center>{{$a['quantidade']}}</center>
+                                                <center>
+                                                    <input type="hidden" name="quantidade_atual[]" value="{{$a['quantidade']}}">    
+                                                    <div class="quantidade">{{$a['quantidade']}}</div>
+                                                </center>
                                             </td>
                                             <td>
                                                 <div>
-                                                    <center>R$ {{$a['preco_acao']}}</center>
+                                                    <center>
+                                                        <div>
+                                                            R$ <span class="preco_acao" id="cota{{$a->id}}">{{$a['preco_acao']}}</span>
+                                                            <input type="hidden" name="preco_acao[]" value="{{$a['preco_acao']}}">
+                                                        </div>
+                                                    </center>
                                                 </div>
                                             </td>
                                             <td>
-                                                <center>R$ {{$a['patrimonioAtualizado']}}</center>
+                                                <center>R$ {{$a['preco_acao']*$a['quantidade']}}</center>
                                             </td>
                                             <td>
-                                                <center>{{$a['participacaoAtual']}}%</center>
+                                                <center>
+                                                    <a onclick="vender_comprar('vender', {{$a->id}})" class="btn btn-danger" type="button" >-</a> <a onclick="vender_comprar('comprar', {{$a->id}})" class="btn btn-success" type="button" >+</a>
+                                                </center>
                                             </td>
                                             <td>
-                                                <center>{{$a['porcentagem_objetivo']}}%</center>
-                                                <!-- <input id="{{$a['symbol']}}" value="{{$a['porcentagem']}}" class='porcentagem' name="{{$a['symbol']}}" value="0" type="number" max='100' min='1'> -->
+                                                <center>
+                                                    <input type="text" id="campo{{$a->id}}" onchange="vender_comprar('linha', {{$a->id}})" value="0" name="quantidade_add[]">
+                                                </center>
+                                                <!-- <input name="quantidade_adicionar" id="campo{{$a->id}}" type="text"> -->
                                             </td>
                                             <td>
-                                                <center>{{$a['porcentagem_objetivo']-$a['participacaoAtual']}}%</center>
-                                                <!-- <input type="number" step="1" min="0"> -->
+                                                <center>
+                                                    <div id="patri{{$a->id}}">
+                                                        R$ 0
+                                                    </div>
+                                                </center>
                                             </td>
-
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -134,7 +134,10 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
-                                <a class="btn btn-light" type="button" href="/listar-carteiras">{{ __('Voltar')}}</a>
+                                <button class="btn btn-success" type="submit">{{ __('Confirmar')}}</button>
+                            </div>
+                            <div class="card">
+                                <a class="btn btn-danger" type="button" href="/listar-carteiras">{{ __('Cancelar')}}</a>
                             </div>
                         </div>    
                     </div>
@@ -150,6 +153,7 @@
         <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
         <script src="{{ asset('js/datatables.js') }}"></script>
         <script src="{{ asset('js/porcentagem.js')}}"></script>
+        <script src="{{ asset('js/carteira_aporte.js')}}"></script>
     @endpush
 @endsection
       

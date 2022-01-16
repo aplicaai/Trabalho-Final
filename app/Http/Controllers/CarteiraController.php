@@ -20,53 +20,53 @@ use Http;
 class CarteiraController extends Controller
 {
 
-    public function atualizar_dados() 
-    {
-        $allDadosAcao = acao::get();
-        $allDadosInfo = Info_ativo::all('name');
+    // public function atualizar_dados() 
+    // {
+    //     $allDadosAcao = acao::get();
+    //     $allDadosInfo = Info_ativo::all('name');
 
-        $dados = [];
-        foreach($allDadosAcao as $d) {
-            array_push($dados,$d->acao);
-        }
-        $a = 0;
-        $ret = [];
+    //     $dados = [];
+    //     foreach($allDadosAcao as $d) {
+    //         array_push($dados,$d->acao);
+    //     }
+    //     $a = 0;
+    //     $ret = [];
 
-        foreach($dados as $d)
-        {
-            $concat = "https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol=".$d.",";
-            $a++;
-            if($a == 4)
-            {
-                $a = 0;
-                $resp = Http::get($concat);
-                if(!empty($resp->json()['results']))
-                {
-                    array_push($ret, $resp->json()['results']);
-                }
-                $concat="https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol=";
-            }   
-        }
+    //     foreach($dados as $d)
+    //     {
+    //         $concat = "https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol=".$d.",";
+    //         $a++;
+    //         if($a == 4)
+    //         {
+    //             $a = 0;
+    //             $resp = Http::get($concat);
+    //             if(!empty($resp->json()['results']))
+    //             {
+    //                 array_push($ret, $resp->json()['results']);
+    //             }
+    //             $concat="https://api.hgbrasil.com/finance/stock_price?key=94741c91&fields=symbol,description,name,price,company_name&symbol=";
+    //         }   
+    //     }
 
-        foreach($ret as $r1) 
-        {
-            foreach($r1 as $r)
-            {
-                Info_ativo::updateOrCreate(
+    //     foreach($ret as $r1) 
+    //     {
+    //         foreach($r1 as $r)
+    //         {
+    //             Info_ativo::updateOrCreate(
                     
-                    ['symbol' => $r['symbol']],
-                    [
-                    'name' => $r['name'],
-                    'company_name' => $r['company_name'],
-                    'description' => $r['description'],
-                    'price' => $r['price']
-                    ]
+    //                 ['symbol' => $r['symbol']],
+    //                 [
+    //                 'name' => $r['name'],
+    //                 'company_name' => $r['company_name'],
+    //                 'description' => $r['description'],
+    //                 'price' => $r['price']
+    //                 ]
                     
-                );
-            }
-        }
+    //             );
+    //         }
+    //     }
 
-    }
+    // }
 
     public function alterar($id_carteira) {
 
@@ -91,13 +91,20 @@ class CarteiraController extends Controller
         foreach($acao_carteiras as $ac)
         {
             $ac['patrimonioAtualizado'] = $ac->quantidade*$ac->preco_acao;
-            $ac['participacaoAtual'] = round(($ac['patrimonioAtualizado']*100)/$valorTotal,2);
+            if($ac['patrimonioAtualizado']!=0) 
+            {
+                $ac['participacaoAtual'] = round(($ac['patrimonioAtualizado']*100)/$valorTotal,2);
+            }
+            else
+            {
+                $ac['participacaoAtual'] = 0;
+            }
         }
 
         //dd($acao_carteiras);
 
 
-        return view('pages.carteira-alterar', compact('acao_carteiras','dadosCarteira'));
+        return view('pages.carteiras.carteira-alterar', compact('acao_carteiras','dadosCarteira'));
 
     }
 
@@ -113,7 +120,7 @@ class CarteiraController extends Controller
 
     public function cadastrar() { 
         $dados = $this->pegarDados();
-        return view('pages.carteira-cadastrar', compact('dados'));        
+        return view('pages.carteiras.carteira-cadastrar', compact('dados'));        
     }
 
     public function carteira_valores(Request $request) {
@@ -130,7 +137,7 @@ class CarteiraController extends Controller
         }
         $contar = count($acoesEscolhidas);
 
-        return view('pages.carteira-valores', compact('acoesEscolhidas', 'contar', 'valor', 'nome', 'valor_carteira'));
+        return view('pages.carteiras.carteira-valores', compact('acoesEscolhidas', 'contar', 'valor', 'nome', 'valor_carteira'));
     }
 
 
@@ -142,14 +149,10 @@ class CarteiraController extends Controller
             $porcentagens[$v] = $_POST[$v];
         }
 
-        
-
         $nome = $_POST['nome'];
         $valor_carteira = $_POST['valor_carteira'];
         $quantidade = $_POST['quantidade'];
 
-
-        
         //Busca valores
         $allDados = Info_ativo::all();
 
@@ -197,7 +200,6 @@ class CarteiraController extends Controller
         return redirect('/dashboard');
     }
 
-
     public function listar() {
 
         $dadosCarteiras = Carteira::all()->where('id_usuario', '=', Auth::id());
@@ -213,7 +215,7 @@ class CarteiraController extends Controller
             $acoesCarteiras[] = $ac;
         }
 
-        return view('pages.carteira-listar', compact('carteiras', 'dadosCarteiras'));
+        return view('pages.carteiras.carteira-listar', compact('carteiras', 'dadosCarteiras'));
     }
 
 
@@ -232,12 +234,18 @@ class CarteiraController extends Controller
             $acoesCarteiras[] = $ac;
         }
 
-        return view('pages.carteira-aporte-listar', compact('carteiras', 'dadosCarteiras'));
+        return view('pages.carteiras.carteira-aporte-listar', compact('carteiras', 'dadosCarteiras'));
     }
 
     public function definir_aporte($id_carteira){
+
+        $valorTotal = 0;
+
         $dadosAcao_carteiras = Acao_carteira::where('id_carteira', '=', $id_carteira)->get();
         $dadosCarteira = Carteira::where('id','=',$id_carteira)->get('nome');
+
+        $arr_id_carteira = [];
+        array_push($arr_id_carteira, $id_carteira);
 
         $acao_carteiras = [];
         foreach($dadosAcao_carteiras as $ac) 
@@ -245,15 +253,109 @@ class CarteiraController extends Controller
             $acao_carteiras[] = $ac;
         }
 
-        // foreach($dadosCarteira as $dc) {
-        //     print_r($dc['nome'].' ');
-        // }
+        foreach($acao_carteiras as $ac) 
+        {
+            $valorTotal = $valorTotal + $ac->preco_acao*$ac->quantidade;   
+        }
 
-        // exit;
-
-        return view('pages.carteira-aporte', compact('acao_carteiras', 'dadosCarteira'));
+        foreach($acao_carteiras as $ac)
+        {
+            $ac['patrimonioAtualizado'] = $ac->quantidade*$ac->preco_acao;
+            if($ac['patrimonioAtualizado']!=0)
+            {
+                $ac['participacaoAtual'] = round(($ac['patrimonioAtualizado']*100)/$valorTotal,2);
+            }
+            else
+            {
+                $ac['participacaoAtual'] = 0;
+            }
+        }
+        
+        return view('pages.carteiras.carteira-aporte', compact('acao_carteiras', 'dadosCarteira', 'arr_id_carteira'));
 
     }
+
+    public function comprar_vender($id_carteira) 
+    {
+        $acao_carteiras = Acao_carteira::where('id_carteira', $id_carteira)->get();
+        //dd($acao_carteiras);
+        return view('pages.carteiras.carteira-venda-compra', compact('acao_carteiras'));
+        
+    }
+
+    public function confirmar_com_ven()
+    {
+        
+        $quantidade_add = $_POST['quantidade_add'];
+        $quantidade_atual = $_POST['quantidade_atual'];
+        
+        
+
+        $id_carteira = $_POST['qualquernome'];
+
+        //dd($id_carteira);
+
+        $preco_acao = $_POST['preco_acao'];
+
+        $ativos = $_POST['ativos'];
+
+        //dd($quantidade_add, $quantidade_atual, $ativos, $preco_acao);
+
+        $arr_valor_total = [];
+        $arr_quantidade_total = [];
+
+        for ($i=0;$i<count($quantidade_add);$i++)
+        {
+
+
+            $valor_para_adicionar = intval($quantidade_add[$i]) * floatval($preco_acao[$i]);
+            $valor_atual = intval($quantidade_atual[$i]) * floatval($preco_acao[$i]);
+
+            // print_r($valor_para_adicionar."<br>");
+            // print_r($valor_atual."<br><br>");
+
+            //Valores totais atualizados
+            $valor_total = $valor_para_adicionar + $valor_atual;
+            $quantidade_total = intval($quantidade_add[$i]) + intval($quantidade_atual[$i]);
+
+            array_push($arr_valor_total, $valor_total);
+            array_push($arr_quantidade_total, $quantidade_total);
+
+
+            // print_r($valor_total."<br>");
+            // print_r($quantidade_total."<br><br>");
+
+            
+
+        }
+
+
+        // exit;
+        // dd($arr_valor_total, $arr_quantidade_total);
+        
+
+        for($i=0; $i<count($quantidade_add); $i++)
+        {
+
+            // print_r($id_carteira[$i]);
+            // print_r($arr_valor_total[$i]);
+            // print_r($arr_quantidade_total[$i]);
+
+            Acao_carteira::
+            where('id',$id_carteira[$i])
+            ->update(
+                [
+                    'valor'=>$arr_valor_total[$i],
+                    'quantidade'=>$arr_quantidade_total[$i]
+                ]
+                );
+        }
+        return redirect('/carteira-aporte-listar');
+        //exit;
+
+
+    }
+
 
     public function json(Request $request) {
         // dd($request->all());

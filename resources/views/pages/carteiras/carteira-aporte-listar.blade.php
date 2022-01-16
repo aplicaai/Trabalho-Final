@@ -67,6 +67,9 @@
                                                 <a class="btn btn-success" type="button" href="/definir-aporte/{{$c['id']}}">
                                                     Aporte
                                                 </a>
+                                                <a class="btn btn-success" type="button" href="/comprar-vender/{{$c['id']}}">
+                                                    Comprar / Vender
+                                                </a>
                                             </td>
                                         </tr>
                                         @endforeach

@@ -129,9 +129,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/alterar-acao/{id}', [CarteiraController::class, 'alterar'])->name('carteira-alterar');
 	Route::get('/carteira-aporte-listar', [CarteiraController::class, 'aporte_listar'])->name('carteira-aporte-listar');
 	Route::get('/definir-aporte/{id}',[CarteiraController::class, 'definir_aporte'])->name('definir-aporte');
-
-
-	Route::post('/carteira-alterar', [CarteiraController::class, 'carteira_alterar'])->name('carteira-alterar');
+	Route::get('/comprar-vender/{id}', [CarteiraController::class, 'comprar_vender'])->name('comprar-vender');
+	
+	Route::post('/confirmar-comprar-vender', [CarteiraController::class, 'confirmar_com_ven'])->name('conf-com-ven');
+	
 	Route::post('/valores-da-carteira', [CarteiraController::class, 'carteira_valores'])->name('carteira-valores');
 	Route::post('/carteira-cadastrar', [CarteiraController::class, 'carteira_cadastrar'])->name('carteira-cadastrar');
 	Route::post('/lista-acoes', [CarteiraController::class, 'lista_acoes'])->name('lista-acoes');
