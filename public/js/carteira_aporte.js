@@ -61,7 +61,7 @@ function aporte() {
     
     var div = '';
 
-    console.log(quantidade_sugerida);
+    // console.log(quantidade_sugerida);
 
     for(var i = 0; i < dist_obj.length; i++)
     {
@@ -71,3 +71,46 @@ function aporte() {
     }
 
 };
+
+
+
+function get_quantidade ()
+{
+    const val = document.querySelector('').value;
+    return  val;
+}
+
+
+function vender_comprar(valor, id) 
+{
+
+    var campo = '#campo'+id
+    var quantidade_atual = document.querySelector(campo).value;
+    console.log(quantidade_atual);
+    //var quantidade_atual = document.getElementById('campo'+id).textContent;
+    var cotacao_atual = document.getElementById('cota'+id).textContent;
+    quantidade_atual = parseInt(quantidade_atual);
+
+    if(valor == 'vender')
+    {
+        quantidade_atual = (quantidade_atual - 1);
+        document.getElementById('campo'+id).value = quantidade_atual;
+        document.getElementById('patri'+id).innerHTML = 'R$ '+(quantidade_atual*cotacao_atual).toFixed(2);
+    }
+    else if(valor == 'comprar')
+    {
+        quantidade_atual = (quantidade_atual + 1);
+        document.getElementById('campo'+id).value = quantidade_atual;
+        document.getElementById('patri'+id).innerHTML = 'R$ '+(quantidade_atual*cotacao_atual).toFixed(2);
+    }
+    else if(valor == 'linha')
+    {
+        
+        document.getElementById('campo'+id).value = quantidade_atual;
+        document.getElementById('patri'+id).innerHTML = 'R$ '+(quantidade_atual*cotacao_atual).toFixed(2);
+    }
+    
+}
+
+
+
