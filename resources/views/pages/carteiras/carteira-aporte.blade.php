@@ -36,7 +36,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <form class="forms-sample" id="carteira-alterar" method="post" action="{{route('carteira-add-quantidade')}}">
+                <form class="forms-sample" id="carteira-alterar" method="post" action="">
                     @csrf
                     @foreach($arr_id_carteira as $a)
                         <input type="hidden" name="id_carteira" value="{{$a}}">
@@ -117,8 +117,8 @@
                                             <td>
                                                 <center>
                                                     <div >
-                                                        <input class="quantidade" style="width:70%" name="quantidade[]" type="number" step="0.01" max='100' min="{{$a['quantidade']}}" value="{{$a['quantidade']}}">
-                                                        <!-- <div class="quantidade" value="{{$a['quantiade']}}">{{$a['quantidade']}}</div> -->
+                                                        <!-- <input class="quantidade" style="width:70%" name="quantidade[]" type="number" step="0.01" max='100' min="{{$a['quantidade']}}" value="{{$a['quantidade']}}"> -->
+                                                        <div class="quantidade" value="{{$a['quantiade']}}">{{$a['quantidade']}}</div>
                                                     </div>
                                                 </center>
                                             </td>
@@ -164,9 +164,9 @@
                     </div>  
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="card">
+                            <!-- <div class="card">
                                 <button  type="submit" class="btn btn-blue" >Adicionar</button>
-                            </div>
+                            </div> -->
                             <div class="card">
                                 <a class="btn btn-light" type="button" href="/listar-carteiras">{{ __('Voltar')}}</a>
                             </div>

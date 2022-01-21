@@ -37,7 +37,7 @@
 <!-- ////////////////////////////////////// -->
         <div class="row">
             <div class="col-sm-12">
-                <form class="forms-sample" id="carteira-cadastrar" method="post" action="{{route('carteira-cadastrar')}}">
+                <form class="forms-sample" id="carteira-cadastrar" method="post" action="">
                     @csrf
                    
                     <div class="card">
