@@ -1,5 +1,5 @@
-';@extends('layouts.main') 
-@section('title', 'Data Tables')
+@extends('layouts.main') 
+@section('title', 'Aporte, Compra e Venda')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -13,8 +13,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-inbox bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Carteira')}}</h5>
-                            <span>{{ __('Visualizar Carteiras')}}</span>
+                            <h5>{{ __('Aporte, Compra e Venda')}}</h5>
+                            <span>{{ __('Adicionar Valor, Comprar e Vender Ativos')}}</span>
                         </div>
                     </div>
                 </div>
@@ -25,9 +25,9 @@
                                 <a href="{{route('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Carteiras</a>
+                                <a href="#">Aportes</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Aportes</li>
+                            <li class="breadcrumb-item active" aria-current="page">Compra e Venda</li>
                         </ol>
                     </nav>
                 </div>

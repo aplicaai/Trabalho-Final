@@ -1,5 +1,5 @@
-';@extends('layouts.main') 
-@section('title', 'Data Tables')
+@extends('layouts.main') 
+@section('title', 'Aporte')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -57,7 +57,7 @@
                             </p>
                             <div class="row">
                                 <input type="number" id="btnAporte-valor" name="aporte-valor" step="0.01">
-                                <a class="btn btn-success" onclick="aporte()" id="adicionar_valor">Adicionar</a>
+                                <a class="btn btn-success" style="margin-left: 10px;" onclick="aporte()" id="adicionar_valor">Adicionar</a>
                             </div>
                         </div>
 

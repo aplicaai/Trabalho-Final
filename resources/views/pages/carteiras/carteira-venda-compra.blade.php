@@ -1,5 +1,5 @@
-'@extends('layouts.main') 
-@section('title', 'Data Tables')
+@extends('layouts.main') 
+@section('title', 'Compra e Venda')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -14,7 +14,7 @@
                         <i class="ik ik-inbox bg-blue"></i>
                         <div class="d-inline">
                             <h5>{{ __('Carteira')}}</h5>
-                            <span>{{ __('Aporte de valores')}}</span>
+                            <span>{{ __('Comprar Vender Ativos')}}</span>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                             <li class="breadcrumb-item">
                                 <a href="#">Carteira</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Aporte de valores</li>
+                            <li class="breadcrumb-item active" aria-current="page">Comprar Vender Ativos</li>
                         </ol>
                     </nav>
                 </div>

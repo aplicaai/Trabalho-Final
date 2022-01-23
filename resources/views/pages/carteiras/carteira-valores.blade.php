@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Data Tables')
+@section('title', 'Carteiras Valores')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -13,8 +13,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-inbox bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Data Table')}}</h5>
-                            <span>{{ __('lorem ipsum dolor sit amet, consectetur adipisicing elit')}}</span>
+                            <h5>{{ __('Carteira Valores')}}</h5>
+                            <span>{{ __('Ajustar o Objetivo dos Ativos')}}</span>
                         </div>
                     </div>
                 </div>
@@ -25,9 +25,9 @@
                                 <a href="{{route('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Tables</a>
+                                <a href="#">Carteira</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Data Table</li>
+                            <li class="breadcrumb-item active" aria-current="page">Carteira Valores</li>
                         </ol>
                     </nav>
                 </div>
@@ -46,9 +46,9 @@
                     @endforeach
 
                     <div class="card">
-                        <div class="card-header d-block">
+                        <!-- <div class="card-header d-block">
                             <h3>{{ __('Zero Configuration')}}</h3>
-                        </div>
+                        </div> -->
                         <div class="card-body">
                             <div class="dt-responsive">
                                 <table id="scr-vtr-dynamic"

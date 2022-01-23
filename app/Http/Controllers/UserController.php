@@ -66,7 +66,7 @@ class UserController extends Controller
                     if (Auth::user()->can('manage_user')){
                         return '<div class="table-actions">
                                 <a href="'.url('user/'.$data->id).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
-                                <a href="'.url('user/delete/'.$data->id).'"><i class="ik ik-trash-2 f-16 text-red"></i></a>
+                                <a href="'.url('user/delete/'.$data->id).'" ><i class="ik ik-trash-2 f-16 text-red"></i></a>
                             </div>';
                     }else{
                         return '';
@@ -145,6 +145,7 @@ class UserController extends Controller
                         // 'name'     => $request->name,
                         'name'      => $request->name,
                         'sobrenome' => $request->sobrenome,
+                        'password'  => Hash::make($request->password),
                         'endereco'  => $request->endereco,
                         'telefone'  => $request->telefone,
                         'rg'        => $request->rg,
@@ -217,8 +218,15 @@ class UserController extends Controller
             $user = User::find($request->id);
 
             $update = $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
+                'name'              => $request->name,
+                'sobrenome'         => $request->sobrenome,
+                'email'             => $request->email,
+                'email_recuperacao' => $request->email_recup,
+                'endereco'          => $request->endereco,
+                'telefone'          => $request->telefone,
+                'rg'                => $request->rg,
+                'cpf'               => $request->cpf
+
             ]);
 
             // update password if user input a new password
@@ -231,7 +239,7 @@ class UserController extends Controller
             // sync user role
             $user->syncRoles($request->role);
 
-            return redirect()->back()->with('success', 'Informações de usuário atualizadas com sucesso!');
+            return redirect('users')->with('success', 'Informações de usuário atualizadas com sucesso!');
         }catch (\Exception $e) {
             $bug = $e->getMessage();
             return redirect()->back()->with('error', $bug);

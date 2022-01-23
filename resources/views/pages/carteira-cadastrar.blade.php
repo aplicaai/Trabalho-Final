@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Form Components')
+@section('title', 'Cadastro de Carteira')
 @section('content')
 
 <pre>

@@ -63,11 +63,34 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="sobrenome">{{ __('Sobrenome')}}<span class="text-red">*</span></label>
+                                        <input id="sobrenome" type="text" class="form-control @error('sobrenome') is-invalid @enderror" name="sobrenome" value="{{ clean($user->sobrenome, 'titles')}}" required>
+                                        <div class="help-block with-errors"></div>
+
+                                        @error('sobrenome')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label for="email">{{ __('Email')}}<span class="text-red">*</span></label>
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ clean($user->email, 'titles')}}" required>
                                         <div class="help-block with-errors"></div>
 
                                         @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email_recup">{{ __('Email Recuperação')}}<span class="text-red">*</span></label>
+                                        <input id="email_recup" type="email" class="form-control @error('email_recuperacao') is-invalid @enderror" name="email_recup" value="{{ clean($user->email_recuperacao, 'titles')}}" required>
+                                        <div class="help-block with-errors"></div>
+
+                                        @error('email_recuperacao')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -99,6 +122,50 @@
                                 </div>
                                 <div class="col-md-6">
                                     <!-- Assign role & view role permisions -->
+                                    <div class="form-group">
+                                        <label for="endereco">{{ __('Endereço')}}<span class="text-red">*</span></label>
+                                        <input id="endereco" type="text" class="form-control @error('endereco') is-invalid @enderror" name="endereco" value="{{ clean($user->endereco, 'titles')}}" required>
+                                        <div class="help-block with-errors"></div>
+
+                                        @error('endereco')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefone">{{ __('Telefone')}}<span class="text-red">*</span></label>
+                                        <input id="telefone" type="telefone" class="form-control @error('telefone') is-invalid @enderror" name="telefone" value="{{ clean($user->telefone, 'titles')}}" required>
+                                        <div class="help-block with-errors"></div>
+
+                                        @error('telefone')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rg">{{ __('RG')}}<span class="text-red">*</span></label>
+                                        <input id="rg" type="text" class="form-control @error('rg') is-invalid @enderror" name="rg" value="{{ clean($user->rg, 'titles')}}" required>
+                                        <div class="help-block with-errors"></div>
+
+                                        @error('rg')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cpf">{{ __('CPF')}}<span class="text-red">*</span></label>
+                                        <input id="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror" name="cpf" value="{{ clean($user->cpf, 'titles')}}" required>
+                                        <div class="help-block with-errors"></div>
+
+                                        @error('cpf')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                     <div class="form-group">
                                         <label for="role">{{ __('Mudar regra')}}<span class="text-red">*</span></label>
                                         {!! Form::select('role', $roles, $user_role->id??'' ,[ 'class'=>'form-control select2', 'placeholder' => 'Select Role','id'=> 'role', 'required'=>'required']) !!}

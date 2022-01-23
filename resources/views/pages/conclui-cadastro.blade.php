@@ -108,6 +108,14 @@
                                     <input type="name" class="form-control" placeholder="CPF" name="cpf" value="{{ old('cpf') }}" required>
                                     <i class="ik ik-file-text"></i>
                                 </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Senha" name="password" required>
+                                    <i class="ik ik-lock"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Confirmar Senha" name="password_confirmation" required>
+                                    <i class="ik ik-eye-off"></i>
+                                </div>
 
                                 <div class="sign-btn text-center">
                                     <button class="btn btn-primary btn-lg pb-4">Concluir cadastro</button>
@@ -130,5 +138,14 @@
         <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script>
         <script src="{{ asset('plugins/screenfull/dist/screenfull.js') }}"></script>
+        <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.telefone').mask('(00) 0 0000-0000');
+        $('.rg').mask('0000000000');
+        $('.cpf').mask('000.000.000-00');
+    });
+</script>
     </body>
 </html>

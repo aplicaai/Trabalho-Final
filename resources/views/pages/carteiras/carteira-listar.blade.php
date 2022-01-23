@@ -1,5 +1,5 @@
-';@extends('layouts.main') 
-@section('title', 'Data Tables')
+@extends('layouts.main') 
+@section('title', 'Listar Carteiras')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')

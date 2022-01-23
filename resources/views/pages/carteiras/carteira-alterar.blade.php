@@ -1,5 +1,5 @@
-'@extends('layouts.main') 
-@section('title', 'Data Tables')
+@extends('layouts.main') 
+@section('title', 'Visualiza Ações')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -14,7 +14,7 @@
                         <i class="ik ik-inbox bg-blue"></i>
                         <div class="d-inline">
                             <h5>{{ __('Carteira')}}</h5>
-                            <span>{{ __('Alterar Carteira')}}</span>
+                            <span>{{ __('Visualiza Ações da Carteira')}}</span>
                         </div>
                     </div>
                 </div>
