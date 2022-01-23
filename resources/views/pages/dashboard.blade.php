@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{{ asset('plugins/chartist/dist/chartist.min.css') }}">
     @endpush
 
+    <p style="font-size: 35px; font-weight:900; color: darkgreen">Seja Bem-Vindo ao Software de Investimentos Aplic<span style="color:darkgoldenrod">@</span>ai</p>
     <div class="container-fluid">
     	<div class="row">
                         <!-- SimpleFX widget MARKET OVERVIEW - START -->
@@ -28,7 +29,7 @@
 		containerId: 'sfx-market-overview',
 		language: 'pt',
 		width: "1280px",
-		height: "602px",
+		height: "502px",
 		symbols: ["PETROBRA.BR","ITAU.BR","VALE.BR","B3.BR","MAGALU.BR","COSAN.BR","SUZANO.BR","ABEV.BR"],
 		theme: "dark",
 		categoriesOrder: ["Equities BR"],

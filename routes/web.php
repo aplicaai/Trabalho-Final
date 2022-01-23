@@ -40,7 +40,7 @@ Route::post('register', [RegisterController::class,'register']);
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
-    return view('pages.register');
+    return view('pages.conclui-cadastro');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth'], function(){
 		return view('pages.dashboard'); 
 	})->name('dashboard')->middleware('verified');
 
-	
+	Route::post('/user/create2', [UserController::class,'store2'])->name('create-user2');
 
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function(){
@@ -80,7 +80,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('/user/create', [UserController::class,'create']);
 		// Route::get('/user/create2', [UserController::class,'conclui'])->name('concluir');
 		Route::post('/user/create', [UserController::class,'store'])->name('create-user');
-		// Route::post('/user/create2', [UserController::class,'store2'])->name('create-user2');
+		//Route::post('/user/create2', [UserController::class,'store2'])->name('create-user2');
 		Route::get('/user/{id}', [UserController::class,'edit']);
 		Route::post('/user/update', [UserController::class,'update']);
 		Route::get('/user/delete/{id}', [UserController::class,'delete']);

@@ -62,7 +62,7 @@
                                             </span>
                                         @enderror
                                     </div> -->
-                                    
+                                    <input type="hidden" name="analista" id="analista" value="{{Auth::user()->name}}">
                                     <div class="form-group">
                                         <label for="email">{{ __('Email Primario')}}<span class="text-red">*</span></label>
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Entre com seu Email" required>

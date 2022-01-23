@@ -53,7 +53,7 @@
                             <div class="logo-centered">
                                 
                                 <a href=""><img width="200" src="{{ asset('img/Sem Titulo-1.png') }}" alt="logo"></a>
-                                <p>{{ __('Pré cadastro de Clientes')}}</p>
+                                <p>{{ __('Conclua seu Cadastro')}}</p>
                             </div>
                             
                             <form action="{{route('create-user2')}}" method="post">
@@ -83,6 +83,7 @@
                                         </label>
                                     </div>
                                 </div> -->
+                                <input type="hidden" id="ids" name="ids" value="{{Auth::id()}}"> 
                                 <div class="form-group">
                                     <input type="name" class="form-control" placeholder="Nome" name="name" value="{{ old('name') }}" required>
                                     <i class="ik ik-user"></i>
@@ -93,23 +94,23 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="name" class="form-control" placeholder="Endereço" name="endereco" value="{{ old('endereco') }}" required>
-                                    <i class="ik ik-user"></i>
+                                    <i class="ik ik-map-pin"></i>
                                 </div>
                                 <div class="form-group">
                                     <input type="telefone" class="form-control" placeholder="Telefone" name="telefone" value="{{ old('telefone') }}" required>
-                                    <i class="ik ik-user"></i>
+                                    <i class="ik ik-phone"></i>
                                 </div>
                                 <div class="form-group">
                                     <input type="name" class="form-control" placeholder="RG" name="rg" value="{{ old('rg') }}" required>
-                                    <i class="ik ik-user"></i>
+                                    <i class="ik ik-file-text"></i>
                                 </div>
                                 <div class="form-group">
                                     <input type="name" class="form-control" placeholder="CPF" name="cpf" value="{{ old('cpf') }}" required>
-                                    <i class="ik ik-user"></i>
+                                    <i class="ik ik-file-text"></i>
                                 </div>
 
                                 <div class="sign-btn text-center">
-                                    <button class="btn btn-primary">{{ __('Concluir cadastro')}}</button>
+                                    <button class="btn btn-primary btn-lg pb-4">Concluir cadastro</button>
                                 </div>
                                 <!-- <div class="sign-btn text-center">
                                     <button class="btn btn-primary">{{ __('Pré cadastrar')}}</button>

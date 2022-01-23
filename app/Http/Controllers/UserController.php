@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+// use Request;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,7 @@ use App\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DataTables,Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -91,9 +93,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // create user 
+
+        // dd($request);
         $validator = Validator::make($request->all(), [
             // 'name'     => 'required | string ',
-            'email'    => 'required | email | unique:users',
+            // 'email'    => 'required | email | unique:users',
             'role'     => 'required'
         ]);
         
@@ -105,18 +109,19 @@ class UserController extends Controller
             // store user information
             $user = User::create([
                         // 'name'     => $request->name,
-                        'email'    => $request->email,
-                        
-                        'password' => Hash::make($request->password),
+                        'email'             => $request->email,
+                        'email_recuperacao' => $request->email2,
+                        'analista'          => $request->analista,
+                        'password'          => Hash::make($request->password),
                     ]);
 
             // assign new role to the user
             $user->syncRoles($request->role);
 
             if($user){ 
-                return redirect('users')->with('success', 'New user created!');
+                return redirect('users')->with('success', 'Novo usuário cadastrado!');
             }else{
-                return redirect('users')->with('error', 'Failed to create new user! Try again.');
+                return redirect('users')->with('error', 'Falha ao criar novo usuário! Tente novamente.');
             }
         }catch (\Exception $e) {
             $bug = $e->getMessage();
@@ -127,35 +132,36 @@ class UserController extends Controller
     public function store2(Request $request)
     {
         // create user 
-        $validator = Validator::make($request->all(), [
-            // 'name'     => 'required | string ',
-            // 'email'    => 'required | email | unique:users',
-            // 'role'     => 'required'
-        ]);
+        // dd($request['name']);
+        // $us = Request::input('ids');
+        // dd($us);
+        $user = User::find($request['ids']);
         
-        if($validator->fails()) {
-            return redirect()->back()->withInput()->with('error', $validator->messages()->first());
-        }
+        // dd($user);
         try
         {
             // store user information
-            $user = User::create([
+            $user->update([
                         // 'name'     => $request->name,
-                        'name'      => $request['name'],
-                        'sobrenome' => $request['sobrenome'],
-                        'endereco'  => $request['endereco'],
-                        'telefone'  => $request['telefone'],
-                        'rg'        => $request['rg'],
-                        'cpf'       => $request['cpf']
+                        'name'      => $request->name,
+                        'sobrenome' => $request->sobrenome,
+                        'endereco'  => $request->endereco,
+                        'telefone'  => $request->telefone,
+                        'rg'        => $request->rg,
+                        'cpf'       => $request->cpf
                     ]);
 
-            // assign new role to the user
-            $user->syncRoles($request->role);
+            // $user = DB::connection('mysql')->update(DB::raw("UPDATE users set name = $request->name, sobrenome = 
+            // $request->sobrenome, endereco = $request->endereco, telefone = $request->telefone, rg = $request->rg,
+            // cpf = $request->cpf where id = $us"));
+
+            //assign new role to the user
+            // $user->syncRoles($request->role);
 
             if($user){ 
-                return redirect('users')->with('success', 'New user created!');
+                return redirect('dashboard')->with('success', 'New user created!');
             }else{
-                return redirect('users')->with('error', 'Failed to create new user! Try again.');
+                return redirect('dashboard')->with('error', 'Failed to create new user! Try again.');
             }
         }catch (\Exception $e) {
             $bug = $e->getMessage();
@@ -225,7 +231,7 @@ class UserController extends Controller
             // sync user role
             $user->syncRoles($request->role);
 
-            return redirect()->back()->with('success', 'User information updated succesfully!');
+            return redirect()->back()->with('success', 'Informações de usuário atualizadas com sucesso!');
         }catch (\Exception $e) {
             $bug = $e->getMessage();
             return redirect()->back()->with('error', $bug);
@@ -243,9 +249,9 @@ class UserController extends Controller
         $user   = User::find($id);
         if($user){
             $user->delete();
-            return redirect('users')->with('success', 'User removed!');
+            return redirect('users')->with('success', 'Usuário removido!');
         }else{
-            return redirect('users')->with('error', 'User not found');
+            return redirect('users')->with('error', 'Usuário não encontrado');
         }
     }
 }
