@@ -2,6 +2,7 @@
 
 All notable changes of the PHPUnit 9.5 release series are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [9.5.12] - 2022-01-21
 
 ### Fixed
@@ -9,6 +10,8 @@ All notable changes of the PHPUnit 9.5 release series are documented in this fil
 * [#4799](https://github.com/sebastianbergmann/phpunit/pull/4799): Memory leaks in `PHPUnit\Framework\TestSuite` class
 * [#4857](https://github.com/sebastianbergmann/phpunit/pull/4857): Result of `debug_backtrace()` is not used correctly
 
+=======
+>>>>>>> 3aabe4db9af6c9d5f1901855bc7d8017dc616c2a
 ## [9.5.11] - 2021-12-25
 
 ### Changed
@@ -110,7 +113,10 @@ All notable changes of the PHPUnit 9.5 release series are documented in this fil
 
 * [#4535](https://github.com/sebastianbergmann/phpunit/issues/4535): `getMockFromWsdl()` does not handle methods that do not have parameters correctly
 
+<<<<<<< HEAD
 [9.5.12]: https://github.com/sebastianbergmann/phpunit/compare/9.5.11...9.5.12
+=======
+>>>>>>> 3aabe4db9af6c9d5f1901855bc7d8017dc616c2a
 [9.5.11]: https://github.com/sebastianbergmann/phpunit/compare/9.5.10...9.5.11
 [9.5.10]: https://github.com/sebastianbergmann/phpunit/compare/9.5.9...9.5.10
 [9.5.9]: https://github.com/sebastianbergmann/phpunit/compare/9.5.8...9.5.9

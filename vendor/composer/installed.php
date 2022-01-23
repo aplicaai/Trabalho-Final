@@ -95,12 +95,21 @@
             'dev_requirement' => false,
         ),
         'doctrine/dbal' => array(
+<<<<<<< HEAD
             'pretty_version' => '3.3.0',
             'version' => '3.3.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/dbal',
             'aliases' => array(),
             'reference' => 'a4b37db6f186b6843474189b424aed6a7cc5de4b',
+=======
+            'pretty_version' => '2.13.7',
+            'version' => '2.13.7.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../doctrine/dbal',
+            'aliases' => array(),
+            'reference' => '6e22f6012b42d7932674857989fcf184e9e9b1c3',
+>>>>>>> 3aabe4db9af6c9d5f1901855bc7d8017dc616c2a
             'dev_requirement' => false,
         ),
         'doctrine/deprecations' => array(
@@ -503,12 +512,21 @@
             ),
         ),
         'laravel-doctrine/orm' => array(
+<<<<<<< HEAD
             'pretty_version' => '1.7.11',
             'version' => '1.7.11.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel-doctrine/orm',
             'aliases' => array(),
             'reference' => 'a53bc9bd830d2f07e9416380c9028c0b19b1a8b8',
+=======
+            'pretty_version' => '1.7.13',
+            'version' => '1.7.13.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel-doctrine/orm',
+            'aliases' => array(),
+            'reference' => 'b32c58b11428d2f0603f641c1c75808c3e2736c0',
+>>>>>>> 3aabe4db9af6c9d5f1901855bc7d8017dc616c2a
             'dev_requirement' => false,
         ),
         'laravel/breeze' => array(
@@ -929,12 +947,21 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
+<<<<<<< HEAD
             'pretty_version' => '9.5.12',
             'version' => '9.5.12.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
             'reference' => '93d4bf4c37aec6384bb9e5d390d9049a463a7256',
+=======
+            'pretty_version' => '9.5.11',
+            'version' => '9.5.11.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpunit/phpunit',
+            'aliases' => array(),
+            'reference' => '2406855036db1102126125537adb1406f7242fdd',
+>>>>>>> 3aabe4db9af6c9d5f1901855bc7d8017dc616c2a
             'dev_requirement' => true,
         ),
         'psr/cache' => array(

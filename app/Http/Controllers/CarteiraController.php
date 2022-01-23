@@ -151,7 +151,7 @@ class CarteiraController extends Controller
 
         $nome = $_POST['nome'];
         $valor_carteira = $_POST['valor_carteira'];
-        $quantidade = $_POST['quantidade'];
+        $quantidade = [];
 
         //Busca valores
         $allDados = Info_ativo::all();
@@ -172,6 +172,7 @@ class CarteiraController extends Controller
         }
 
         $valores_calculados = [];
+
         foreach($ret as $r) {
         
             $p_symbol = $porcentagens[$r['symbol']];
@@ -180,6 +181,10 @@ class CarteiraController extends Controller
             $symbol = $r['symbol'];
 
             $valores_calculados[$symbol] = ($vcp)/100;
+
+            $quantidade[$symbol] = intval($valores_calculados[$symbol] / floatval($r['price']));
+
+            //dd($quantidade);
         }
 
         Carteira::create(['id_usuario'=>Auth::id(),'nome'=>$nome, 'valor'=>$valor_carteira]);
@@ -193,7 +198,7 @@ class CarteiraController extends Controller
             'valor'=>$valores_calculados[$r['symbol']], 
             'porcentagem_objetivo'=>$porcentagens[$r['symbol']], 
             'preco_acao'=>$r['price'],
-            'quantidade'=>$quantidade,
+            'quantidade'=>$quantidade[$r['symbol']],
             'setor'=>$r['description']
             ]);
         }

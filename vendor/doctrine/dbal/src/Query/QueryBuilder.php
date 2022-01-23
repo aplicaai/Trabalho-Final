@@ -327,9 +327,13 @@ class QueryBuilder
     /**
      * Executes this query using the bound parameters and their types.
      *
+<<<<<<< HEAD:vendor/doctrine/dbal/src/Query/QueryBuilder.php
      * @deprecated Use {@see executeQuery()} or {@see executeStatement()} instead.
      *
      * @return Result|int
+=======
+     * @return ForwardCompatibility\Result|int
+>>>>>>> 3aabe4db9af6c9d5f1901855bc7d8017dc616c2a:vendor/doctrine/dbal/lib/Doctrine/DBAL/Query/QueryBuilder.php
      *
      * @throws Exception
      */

@@ -126,7 +126,7 @@ Route::group(['middleware' => 'auth'], function(){
 	//Carteira
 	Route::get('/cadastro-da-carteira', [CarteiraController::class, 'cadastrar']);
 	Route::get('/listar-carteiras', [CarteiraController::class, 'listar'])->name('carteira-listar');
-	Route::get('/alterar-acao/{id}', [CarteiraController::class, 'alterar'])->name('carteira-alterar');
+	Route::get('/alterar-acao/{id}', [CarteiraController::class, 'alterar']);
 	Route::get('/carteira-aporte-listar', [CarteiraController::class, 'aporte_listar'])->name('carteira-aporte-listar');
 	Route::get('/definir-aporte/{id}',[CarteiraController::class, 'definir_aporte'])->name('definir-aporte');
 	Route::get('/comprar-vender/{id}', [CarteiraController::class, 'comprar_vender'])->name('comprar-vender');
