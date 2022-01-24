@@ -23,7 +23,7 @@ function aporte() {
 
     for(var i = 0; i < dist_obj.length; i++) 
     {
-        arr_quantidade.push(parseFloat(quantidade[i].value));
+        arr_quantidade.push(parseFloat(quantidade[i].textContent));
         arr_preco_acao.push(parseFloat(preco_acao[i].textContent));
         arr_dist_obj.push(parseFloat(dist_obj[i].textContent));
         arr_dist_porc.push(parseFloat(dist_porc[i].textContent));
@@ -52,6 +52,8 @@ function aporte() {
         totalAcoes.push(empresaVS[i]/arr_preco_acao[i]);
     }
 
+    console.log(totalAcoes);
+
     var quantidade_sugerida = [];
 
     for(var i = 0; i < dist_obj.length; i++)
@@ -61,7 +63,7 @@ function aporte() {
     
     var div = '';
 
-    // console.log(quantidade_sugerida);
+    console.log(quantidade_sugerida);
 
     for(var i = 0; i < dist_obj.length; i++)
     {
