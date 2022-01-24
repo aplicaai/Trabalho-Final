@@ -74,7 +74,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::post('/user/create2', [UserController::class,'store2'])->name('create-user2');
 	Route::get('/meus_clientes', [MeusClientesController::class,'listar'])->name('meus_clientes');
-	Route::get('/meus_clientes/ver_carteiras', [MeusClientesController::class,'verCarteiras'])->name('ver_carteiras');
+	Route::get('/meus_clientes/ver_carteiras/{id}', [MeusClientesController::class,'verCarteiras'])->name('ver_carteiras');
 
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function(){

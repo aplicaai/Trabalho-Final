@@ -67,7 +67,7 @@
                                     <td>{{$cliente->telefone}}</td>
                                     <td>{{$cliente->rg}}</td>
                                     <td>{{$cliente->cpf}}</td>
-                                    <td><a href="{{url('meus_clientes/ver_carteiras')}}" type="button" class="btn btn-success">Ver Carteiras</a></td>
+                                    <td><a href="{{url('meus_clientes/ver_carteiras', [$cliente->id])}}" type="button" class="btn btn-success">Ver Carteiras</a></td>
                                 </tr>                
                             @endforeach
                             </tbody>
