@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MeusClientesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
@@ -72,6 +73,8 @@ Route::group(['middleware' => 'auth'], function(){
 	})->name('dashboard')->middleware('verified');
 
 	Route::post('/user/create2', [UserController::class,'store2'])->name('create-user2');
+	Route::get('/meus_clientes', [MeusClientesController::class,'listar'])->name('meus_clientes');
+	Route::get('/meus_clientes/ver_carteiras', [MeusClientesController::class,'verCarteiras'])->name('ver_carteiras');
 
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function(){

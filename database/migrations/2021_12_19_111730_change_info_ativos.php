@@ -13,13 +13,15 @@ class ChangeInfoAtivos extends Migration
      */
     public function up()
     {
-        Schema::table('info_ativos', function (Blueprint $table) { 
-            $table->string('symbol')->nullable();
-            $table->string('name')->nullable();
-            $table->string('company_name')->nullable();
-            $table->string('description')->nullable();
-            $table->string('price')->nullable();
-        });
+        
+            Schema::table('info_ativos', function (Blueprint $table) { 
+                $table->string('symbol')->nullable();
+                $table->string('name')->nullable();
+                $table->string('company_name')->nullable();
+                $table->string('description')->nullable();
+                $table->string('price')->nullable();
+            });
+        
     }
     /**
      * Reverse the migrations.

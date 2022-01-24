@@ -27,6 +27,7 @@
                         @can('manage_user')
                         <a href="{{url('users')}}" class="menu-item {{ ($segment1 == 'users') ? 'active' : '' }}">{{ __('Usuários')}}</a>
                         <a href="{{url('user/create')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Cadastrar Usuário')}}</a>
+                        <a href="{{url('meus_clientes')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Meus Clientes')}}</a>
                          @endcan
                          <!-- only those have manage_role permission will get access -->
                         @can('manage_roles')

@@ -60,10 +60,11 @@
                         {{-- <div  class="card-header">
                            
                             <div class="col col-sm-6">
-
+                            
                                 <div class="card-search with-adv-search dropdown">
                                     <form action="">
                                         <input type="text" class="form-control global_filter" id="global_filter" placeholder="Search..">
+                                        
                                         <button type="submit" class="btn btn-icon"><i class="ik ik-search"></i></button>
                                         <button type="button" id="adv_wrap_toggler" class="adv-btn ik ik-chevron-down dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                         <div class="adv-search-wrap dropdown-menu dropdown-menu-right" aria-labelledby="adv_wrap_toggler">
@@ -114,7 +115,12 @@
                             </div>
                         </div> --}}
                         
-                        <div class="card-body">
+                            
+                            <!-- <form action="" method="post" class="form-inline">
+                                <input class="form-control" type="search" name="contact" value="<?php if(empty($dado['name'])){ $dado['name'] = '';} else { echo $dado['name'];} ?>" placeholder="Pesquisar" aria-label="Pesquisar">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                            </form> -->
+                            <div class="card-body">
                             <table id="scr-vtr-dynamic" class="table table-striped table-bordered nowrap">
                                 <thead>
                                     <tr>
