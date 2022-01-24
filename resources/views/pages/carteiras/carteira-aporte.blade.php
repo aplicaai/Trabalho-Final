@@ -144,7 +144,7 @@
                                             </td>
                                             <td>
                                                 <center>
-                                                    <div class="porcen_distancia">{{$a['porcentagem_objetivo']-$a['participacaoAtual']}} %</div>
+                                                    <div class="porcen_distancia">{{number_format(($a['porcentagem_objetivo']-$a['participacaoAtual']),2)}} %</div>
                                                 </center>
                                             </td>
                                             <td>
