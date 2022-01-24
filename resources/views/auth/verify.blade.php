@@ -1,7 +1,10 @@
-@extends('layouts.main')
+<!-- @extends('layouts.main') -->
 
 
 @section('content')
+@push('head')
+    <link rel="icon" href="{{ asset('icone2.png')}}" />
+    @endpush
 <div class="container text-center logo-centered mt-5">
     <a href=""><img height="40" src="{{ asset('img/Sem Titulo-1.png') }}" alt="Aplicaai" ></a>
 </div>

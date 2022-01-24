@@ -58,7 +58,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                                    <input id="password" type="password" placeholder="Senha" class="form-control @error('password') is-invalid @enderror" name="password" required>
                                     <i class="ik ik-lock"></i>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
