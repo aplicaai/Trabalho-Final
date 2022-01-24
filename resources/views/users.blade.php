@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Users')
+@section('title', 'Lista Usuários')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
