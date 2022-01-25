@@ -195,6 +195,10 @@ class CarteiraController extends Controller
         $acoesEscolhidas = [];
         $dados = $this->pegarDados();
         foreach($dados as $dado) {
+            if($valor == '') {
+                echo "<script>if(confirm('Escollha ao menos uma Ação')) { location.href = document.referrer} else {location.href = document.referrer};
+                </script>";
+            }
             if(in_array($dado['symbol'], $valor)) {
                 array_push($acoesEscolhidas, $dado);
             }
