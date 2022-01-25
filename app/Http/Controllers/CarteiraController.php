@@ -108,6 +108,70 @@ class CarteiraController extends Controller
 
     }
 
+    public function alterar_porcentagem($id_carteira)
+    {
+        $dadosAcao_carteiras = Acao_carteira::all()->where('id_carteira', '=', $id_carteira);
+        $dadosCarteira = Carteira::where('id','=',$id_carteira)->get('nome');
+
+        $acao_carteiras = [];
+        foreach($dadosAcao_carteiras as $ac) 
+        {
+            $acao_carteiras[] = $ac;
+        }
+
+        $valorTotal = 0;
+        $patrimonioAtualizado = [];
+        $participacaoAtual = [];
+
+        foreach($acao_carteiras as $ac) 
+        {
+            $valorTotal = $valorTotal + $ac->preco_acao*$ac->quantidade;   
+        }
+
+        foreach($acao_carteiras as $ac)
+        {
+            $ac['patrimonioAtualizado'] = $ac->quantidade*$ac->preco_acao;
+            if($ac['patrimonioAtualizado']!=0) 
+            {
+                $ac['participacaoAtual'] = round(($ac['patrimonioAtualizado']*100)/$valorTotal,2);
+            }
+            else
+            {
+                $ac['participacaoAtual'] = 0;
+            }
+        }
+
+        //dd($acao_carteiras);
+
+
+        return view('pages.carteiras.carteira-alterar-percentual', compact('acao_carteiras','dadosCarteira'));
+    }
+
+    public function atualizar_percentual()
+    {
+        
+        $percentual = $_POST['percentual'];
+        $id_carteira = $_POST['id_carteira'];
+        $ativo = $_POST['ativo'];
+
+
+
+        //dd($percentual, $id_carteira, $ativo);
+        //dd($quantidade);
+        
+        for($i = 0; $i<count($percentual); $i++)
+        {
+            $cart = Acao_carteira::where('id_usuario',Auth::id())->where('ativo', $ativo[$i]);
+
+            $cart->update([
+                'porcentagem_objetivo'=>$percentual[$i]
+            ]);
+
+        }
+        return redirect('/listar-carteiras');
+    }
+
+
     public function pegarDados() {
         $allDados = Info_ativo::all();
         $ret = [];
@@ -332,10 +396,7 @@ class CarteiraController extends Controller
     }
 
     public function comprar_vender($id) 
-    {
-
-
-        
+    {   
         $acao_carteiras = Acao_carteira::where('id_carteira', $id)->get();
         $valor = Carteira::where('id',$id)->first('valor');
         $valor = $valor->valor;
