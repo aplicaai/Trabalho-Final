@@ -39,7 +39,7 @@
             <div class="col-sm-12">
                 <form class="forms-sample" id="carteira-cadastrar" method="post" action="{{route('carteira-cadastrar')}}">
                     @csrf
-                    <input type="hidden" value="{{$valor_carteira}}" name="valor_carteira">
+                    <input type="hidden" value="{{$valor_carteira}}" id='valor_carteira' name="valor_carteira">
                     <input type="hidden" value="{{$nome}}" name="nome">
                     @foreach($valor as $v)
                         <input type="hidden" name="acao[]" value="{{$v}}">
@@ -59,25 +59,30 @@
                                         <th>Nome</th>
                                         <th>Razão</th>
                                         <th>Preço por ação</th>
-                                        
                                         <th>Objetivo</th>
+                                        <th>Valor sugerido</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($acoesEscolhidas as $ae)
                                             
                                         <tr>
-                                            <td>{{$ae['symbol']}}</td>
+                                            <td class="symbol">{{$ae['symbol']}}</td>
                                             <td>{{$ae['name']}}</td>
                                             <td>{{$ae['company_name']}}</td>
                                             <td>        
                                                 {{$ae['price']}}
                                             </td>
-                                           
                                             <td>
-                                                <input id="{{$ae['symbol']}}" step="0.01" class='porcentagem' name="{{$ae['symbol']}}" value="0" type="number" max='100' min='0'>
+                                                <input onchange='return sugerir_valor()' id="" step="0.01" class='porcentagem' name="{{$ae['symbol']}}" value="0" type="number" max='100' min='0'>
                                             </td>
-                                            
+                                            <td>
+                                                <center>
+                                                    <div id="{{$ae['symbol']}}">
+                                                        
+                                                    </div>
+                                                </center>
+                                            </td>
                                         </tr>
                                         
                                         @endforeach
@@ -90,7 +95,8 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
-                                <button onclick='porcentagem()' type="submit" class="btn btn-primary mr-2">{{ __('Confirmar')}}</button>
+                                <button onclick='porcentagem()' type="submit" class="btn btn-primary mr-2">{{ __('Confirmar com sugestão')}}</button>
+                                <button class="btn btn-light" type="submit" href="/carteira-cadastrar-semvalor">{{ __('Confirmar sem sugestão')}}</button>
                                 <a class="btn btn-light" type="button" href="/dashboard">{{ __('Cancelar')}}</a>
                             </div>
                         </div>    
@@ -107,6 +113,7 @@
         <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
         <script src="{{ asset('js/datatables.js') }}"></script>
         <script src="{{ asset('js/porcentagem.js')}}"></script>
+        <script src="{{ asset('js/carteira_aporte.js')}}"></script>
     @endpush
 @endsection
       

@@ -1,5 +1,24 @@
 //const { sample } = require("lodash");
 
+function sugerir_valor()
+{
+    var arr_porcentagem = [];
+    var arr_symbol = [];
+    
+    var porcentagens = document.getElementsByClassName('porcentagem'); 
+    var symbols = document.getElementsByClassName('symbol');
+    var valor_carteira = document.getElementById('valor_carteira').value;
+
+    for(var i = 0; symbols.length>i; i++)
+    {
+        var resultado = (valor_carteira*(porcentagens[i].value)/100).toFixed(2);
+        var s = symbols[i].textContent;
+        console.log(resultado, symbols[i]);
+        document.getElementById(s).innerHTML = resultado;
+    }
+
+}
+
 function aporte() {
 
     var arr_quantidade = [];
@@ -97,19 +116,19 @@ function vender_comprar(valor, id)
     {
         quantidade_atual = (quantidade_atual - 1);
         document.getElementById('campo'+id).value = quantidade_atual;
-        document.getElementById('patri'+id).innerHTML = 'R$ '+(quantidade_atual*cotacao_atual).toFixed(2);
+        document.getElementById('patri'+id).value = (quantidade_atual*cotacao_atual).toFixed(2);
     }
     else if(valor == 'comprar')
     {
         quantidade_atual = (quantidade_atual + 1);
         document.getElementById('campo'+id).value = quantidade_atual;
-        document.getElementById('patri'+id).innerHTML = 'R$ '+(quantidade_atual*cotacao_atual).toFixed(2);
+        document.getElementById('patri'+id).value  = (quantidade_atual*cotacao_atual).toFixed(2);
     }
     else if(valor == 'linha')
     {
         
         document.getElementById('campo'+id).value = quantidade_atual;
-        document.getElementById('patri'+id).innerHTML = 'R$ '+(quantidade_atual*cotacao_atual).toFixed(2);
+        document.getElementById('patri'+id).value  = (quantidade_atual*cotacao_atual).toFixed(2);
     }
     
 }

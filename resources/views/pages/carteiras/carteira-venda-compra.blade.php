@@ -72,11 +72,14 @@
                                     </tr>
                                     </thead>
                                     <tbody class="valores">
+                                        <input type="hidden" name='id' value='{{$id}}'>
                                         @foreach($acao_carteiras as $a)
                                        
                                         <tr>
                                             <td>
                                                 <center>
+                                                    <input type="hidden" name='id_valor' value='{{$id}}'>
+                                                    <input type="hidden" name='valor' value='{{$valor}}'>
                                                     <input type="hidden" name="qualquernome[]" value="{{$a->id}}">
                                                     <input type="hidden" name="ativos[]" value="{{$a['ativo']}}">
                                                     <div class="ativo"  value="{{$a['ativo']}}">{{$a['ativo']}}</div>
@@ -103,7 +106,9 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <center>R$ {{$a['preco_acao']*$a['quantidade']}}</center>
+                                                <center>
+                                                    <input type="text" name="patrimonio_atual[]" value="{{$a['preco_acao']*$a['quantidade']}}">
+                                                </center>
                                             </td>
                                             <td>
                                                 <center>
@@ -118,9 +123,8 @@
                                             </td>
                                             <td>
                                                 <center>
-                                                    <div id="patri{{$a->id}}">
-                                                        R$ 0
-                                                    </div>
+                                                    <input type="text" id="patri{{$a->id}}" value="" name='patrimonio_add[]'>
+                                                    
                                                 </center>
                                             </td>
                                         </tr>
