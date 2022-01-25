@@ -168,6 +168,9 @@
                                 <button  type="submit" class="btn btn-blue" >Adicionar</button>
                             </div> -->
                             <div class="card">
+                            @foreach($arr_id_carteira as $a)
+                                <a class="btn btn-success" type="button" href="{{url('comprar-vender', [$a])}}">{{ __('Comprar/Vender')}}</a>
+                            @endforeach
                                 <a class="btn btn-light" type="button" href="/carteira-aporte-listar">{{ __('Voltar')}}</a>
                             </div>
                         </div>    

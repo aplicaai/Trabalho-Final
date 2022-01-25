@@ -113,7 +113,7 @@
                                                 <input id="{{$a['symbol']}}" value="{{$a['porcentagem_objetivo']}}" class='porcentagem' name="percentual[]" value="0" type="number" max='100' min='0'>
                                             </td>
                                             <td>
-                                                <center>{{$a['porcentagem_objetivo']-$a['participacaoAtual']}}%</center>
+                                                <center>{{number_format($a['porcentagem_objetivo']-$a['participacaoAtual'],2)}}%</center>
                                                 <!-- <input type="number" value="" step="0.01" min="0"> -->
                                             </td>
 
@@ -128,10 +128,10 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
-                                <button class="btn btn-light" type="submit">{{ __('Alterar')}}</button>
+                                <button class="btn btn-success" type="submit">{{ __('Alterar')}}</button>
                             </div>
                             <div class="card">
-                                <a class="btn btn-light" type="button" href="/listar-carteiras">{{ __('Voltar')}}</a>
+                                <a class="btn btn-warning" type="button" href="/listar-carteiras">{{ __('Voltar')}}</a>
                             </div>
                         </div>    
                     </div>

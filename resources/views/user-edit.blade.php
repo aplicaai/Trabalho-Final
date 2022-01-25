@@ -52,8 +52,8 @@
                                 <div class="col-sm-6">
 
                                     <div class="form-group">
-                                        <label for="name">{{ __('Nome usuário')}}<span class="text-red">*</span></label>
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ clean($user->name, 'titles')}}" required>
+                                        <label for="name">{{ __('Nome usuário')}}</label>
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ clean($user->name, 'titles')}}" >
                                         <div class="help-block with-errors"></div>
 
                                         @error('name')
@@ -63,8 +63,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="sobrenome">{{ __('Sobrenome')}}<span class="text-red">*</span></label>
-                                        <input id="sobrenome" type="text" class="form-control @error('sobrenome') is-invalid @enderror" name="sobrenome" value="{{ clean($user->sobrenome, 'titles')}}" required>
+                                        <label for="sobrenome">{{ __('Sobrenome')}}</label>
+                                        <input id="sobrenome" type="text" class="form-control @error('sobrenome') is-invalid @enderror" name="sobrenome" value="{{ clean($user->sobrenome, 'titles')}}" >
                                         <div class="help-block with-errors"></div>
 
                                         @error('sobrenome')
@@ -74,8 +74,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">{{ __('Email')}}<span class="text-red">*</span></label>
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ clean($user->email, 'titles')}}" required>
+                                        <label for="email">{{ __('Email')}}</label>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ clean($user->email, 'titles')}}" >
                                         <div class="help-block with-errors"></div>
 
                                         @error('email')
@@ -86,8 +86,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="email_recup">{{ __('Email Recuperação')}}<span class="text-red">*</span></label>
-                                        <input id="email_recup" type="email" class="form-control @error('email_recuperacao') is-invalid @enderror" name="email_recup" value="{{ clean($user->email_recuperacao, 'titles')}}" required>
+                                        <label for="email_recup">{{ __('Email Recuperação')}}</label>
+                                        <input id="email_recup" type="email" class="form-control @error('email_recuperacao') is-invalid @enderror" name="email_recup" value="{{ clean($user->email_recuperacao, 'titles')}}" >
                                         <div class="help-block with-errors"></div>
 
                                         @error('email_recuperacao')
@@ -123,8 +123,8 @@
                                 <div class="col-md-6">
                                     <!-- Assign role & view role permisions -->
                                     <div class="form-group">
-                                        <label for="endereco">{{ __('Endereço')}}<span class="text-red">*</span></label>
-                                        <input id="endereco" type="text" class="form-control @error('endereco') is-invalid @enderror" name="endereco" value="{{ clean($user->endereco, 'titles')}}" required>
+                                        <label for="endereco">{{ __('Endereço')}}</label>
+                                        <input id="endereco" type="text" class="form-control @error('endereco') is-invalid @enderror" name="endereco" value="{{ clean($user->endereco, 'titles')}}" >
                                         <div class="help-block with-errors"></div>
 
                                         @error('endereco')
@@ -134,8 +134,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="telefone">{{ __('Telefone')}}<span class="text-red">*</span></label>
-                                        <input id="telefone" type="telefone" class="form-control @error('telefone') is-invalid @enderror" name="telefone" value="{{ clean($user->telefone, 'titles')}}" required>
+                                        <label for="telefone">{{ __('Telefone')}}</label>
+                                        <input id="telefone" type="telefone" class="form-control @error('telefone') is-invalid @enderror" name="telefone" value="{{ clean($user->telefone, 'titles')}}" >
                                         <div class="help-block with-errors"></div>
 
                                         @error('telefone')
@@ -145,8 +145,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="rg">{{ __('RG')}}<span class="text-red">*</span></label>
-                                        <input id="rg" type="text" class="form-control @error('rg') is-invalid @enderror" name="rg" value="{{ clean($user->rg, 'titles')}}" required>
+                                        <label for="rg">{{ __('RG')}}</label>
+                                        <input id="rg" type="text" class="form-control @error('rg') is-invalid @enderror" name="rg" value="{{ clean($user->rg, 'titles')}}" >
                                         <div class="help-block with-errors"></div>
 
                                         @error('rg')
@@ -156,8 +156,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="cpf">{{ __('CPF')}}<span class="text-red">*</span></label>
-                                        <input id="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror" name="cpf" value="{{ clean($user->cpf, 'titles')}}" required>
+                                        <label for="cpf">{{ __('CPF')}}</label>
+                                        <input id="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror" name="cpf" value="{{ clean($user->cpf, 'titles')}}">
                                         <div class="help-block with-errors"></div>
 
                                         @error('cpf')
@@ -167,8 +167,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="role">{{ __('Mudar regra')}}<span class="text-red">*</span></label>
-                                        {!! Form::select('role', $roles, $user_role->id??'' ,[ 'class'=>'form-control select2', 'placeholder' => 'Select Role','id'=> 'role', 'required'=>'required']) !!}
+                                        <label for="role">{{ __('Mudar regra')}}</label>
+                                        {!! Form::select('role', $roles, $user_role->id??'' ,[ 'class'=>'form-control select2', 'placeholder' => 'Select Role','id'=> 'role']) !!}
                                     </div>
                                     <div class="form-group">
                                         <label for="role">{{ __('Permissões')}}</label>

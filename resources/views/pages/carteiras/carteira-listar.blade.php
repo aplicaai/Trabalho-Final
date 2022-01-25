@@ -82,7 +82,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
-                                <a class="btn btn-light" type="button" href="/dashboard">{{ __('Voltar')}}</a>
+                                <a class="btn btn-warning" type="button" href="/dashboard">{{ __('Voltar')}}</a>
                             </div>
                         </div>    
                     </div>

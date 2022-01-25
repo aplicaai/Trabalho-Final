@@ -182,9 +182,11 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
-                                <button type="submit" class="btn btn-primary mr-2">{{ __('Próximo passo')}}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('Próximo passo')}}</button>
                                 </form>   
-                                <a type="button" href="/dashboard" class="btn btn-light">{{ __('Cancelar')}}</a>
+                            </div>
+                            <div class="card">
+                                <a type="button" href="/dashboard" class="btn btn-warning">{{ __('Cancelar')}}</a>
                             </div>
                         </div>    
                     </div>

@@ -95,9 +95,9 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
-                                <button onclick='porcentagem()' type="submit" class="btn btn-primary mr-2">{{ __('Confirmar com sugestão')}}</button>
-                                <button class="btn btn-light" type="submit" href="/carteira-cadastrar-semvalor">{{ __('Confirmar sem sugestão')}}</button>
-                                <a class="btn btn-light" type="button" href="/dashboard">{{ __('Cancelar')}}</a>
+                                <button onclick='porcentagem()' type="submit" class="btn btn-primary">{{ __('Confirmar com sugestão')}}</button>
+                                <button class="btn btn-success mt-5" type="submit" href="/carteira-cadastrar-semvalor">{{ __('Confirmar sem sugestão')}}</button>
+                                <a class="btn btn-warning mt-5" type="button" href="/dashboard">{{ __('Cancelar')}}</a>
                             </div>
                         </div>    
                     </div>
