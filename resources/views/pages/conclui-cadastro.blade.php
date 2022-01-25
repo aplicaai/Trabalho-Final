@@ -49,7 +49,7 @@
                     </div>
                     
                     <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
-                        <div class="authentication-form mx-auto">
+                        <div class="authentication-form mx-auto" style="margin: 0;">
                             <div class="logo-centered">
                                 
                                 <a href=""><img width="200" src="{{ asset('img/Sem Titulo-1.png') }}" alt="logo"></a>
@@ -97,15 +97,15 @@
                                     <i class="ik ik-map-pin"></i>
                                 </div>
                                 <div class="form-group">
-                                    <input type="telefone" class="form-control" placeholder="Telefone" name="telefone" value="{{ old('telefone') }}" required>
+                                    <input type="telefone" class="form-control" placeholder="Telefone" name="telefone" id="telefone" value="{{ old('telefone') }}" required>
                                     <i class="ik ik-phone"></i>
                                 </div>
                                 <div class="form-group">
-                                    <input type="name" class="form-control" placeholder="RG" name="rg" value="{{ old('rg') }}" required>
+                                    <input type="name" class="form-control" placeholder="RG" name="rg" id="rg" value="{{ old('rg') }}" required>
                                     <i class="ik ik-file-text"></i>
                                 </div>
                                 <div class="form-group">
-                                    <input type="name" class="form-control" placeholder="CPF" name="cpf" value="{{ old('cpf') }}" required>
+                                    <input type="name" class="form-control" placeholder="CPF" name="cpf" id="cpf" value="{{ old('cpf') }}" required>
                                     <i class="ik ik-file-text"></i>
                                 </div>
                                 <div class="form-group">
@@ -142,9 +142,9 @@
 
 <script>
     $(document).ready(function(){
-        $('.telefone').mask('(00) 0 0000-0000');
-        $('.rg').mask('0000000000');
-        $('.cpf').mask('000.000.000-00');
+        $('#telefone').mask('(00) 0 0000-0000');
+        $('#rg').mask('0000000000');
+        $('#cpf').mask('000.000.000-00');
     });
 </script>
     </body>

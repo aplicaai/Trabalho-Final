@@ -201,5 +201,14 @@
         <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
         <!--get role wise permissiom ajax script-->
         <script src="{{ asset('js/get-role.js') }}"></script>
+        <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('#telefone').mask('(00) 0 0000-0000');
+                $('#rg').mask('0000000000');
+                $('#cpf').mask('000.000.000-00');
+            });
+        </script>
     @endpush
 @endsection

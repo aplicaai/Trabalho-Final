@@ -76,7 +76,7 @@
                         <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="More"><i class="ik ik-more-horizontal"></i></a>
                     </div>
                 </div> -->
-                <span style="color:forestgreen; position:relative; font-weight:800; left: -350px; ">@if(Auth::user()->analista != '') Você está sendo acompanhado pelo(a) Analista <span style="color:darkgoldenrod;">{{Auth::user()->analista}}</span>@else Analista @endif</span>
+                <span style="color:forestgreen; position:relative; font-weight:800; left: -350px; ">@if(Auth::user()->analista != '' & Auth::user()->role == 5) Você está sendo acompanhado pelo(a) Analista <span style="color:darkgoldenrod;">{{Auth::user()->analista}}</span> @else Analista @endif</span>
                 <span>@if(date('H') >= 0 && date('H') <= 12) <span>Olá  Bom dia,&nbsp; </span>@endif @if(date('H') >= 13 && date('H') <= 18) <span> Olá  Boa Tarde,&nbsp; </span> @endif @if(date('H') >= 19 && date('H') <= 23) <span> Olá  Boa Noite,&nbsp; </span>@endif</span>
                 <span> {{ Auth::user()->name}}</span>
                 <!-- <button type="button" class="nav-link ml-10" id="apps_modal_btn" data-toggle="modal" data-target="#appsModal"><i class="ik ik-grid"></i></button> -->

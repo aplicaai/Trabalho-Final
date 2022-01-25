@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeCarteiras extends Migration
+class AddCollumUsersRole extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class ChangeCarteiras extends Migration
      */
     public function up()
     {
-        {
-            Schema::table('carteiras', function ($table) {
-                $table->bigIncrements('id')->change();
-            });
-        }
+        Schema::table('users', function ($table) {
+            $table->string('role')->nullable();
+        });
     }
 
     /**
@@ -27,8 +25,8 @@ class ChangeCarteiras extends Migration
      */
     public function down()
     {
-        Schema::table('carteiras', function ($table) {
-            $table->bigIncrements('id')->change();
+        Schema::table('users', function ($table) {
+            $table->dropColumn('role');
         });
     }
 }
