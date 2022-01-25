@@ -164,7 +164,8 @@
                             </table>
                             @push('script') 
                                 <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
-                                <script src="{{ asset('js/datatables.js') }}"></script>
+                                <!-- <script src="{{ asset('js/datatables.js') }}"></script> -->
+                                <script src="{{ asset('js/carteira-cadastrar.js') }}"></script>
                                 <script src="{{ asset('plugins/jvectormap/jquery-jvectormap.min.js') }}"></script>
                                 <script src="{{ asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
                                 <script src="{{ asset('plugins/moment/moment.js') }}"></script>

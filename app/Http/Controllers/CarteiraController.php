@@ -191,12 +191,18 @@ class CarteiraController extends Controller
         $nome = $request->get('nome_carteira');
         $valor_carteira = $request->get('valor_carteira');
         $valor = $request->get('checkbox');
-
+        
         $acoesEscolhidas = [];
         $dados = $this->pegarDados();
+        
         foreach($dados as $dado) {
+            // dd($dado->price);
             if($valor == '') {
                 echo "<script>if(confirm('Escollha ao menos uma Ação')) { location.href = document.referrer} else {location.href = document.referrer};
+                </script>";
+            }
+            if($dado->price == 0.0) {
+                echo "<script>if(confirm('Você escolheu um Ativo com a Cotação R$ 0.0. Escolha um Ativo com valor de Mercado!')) { location.href = document.referrer} else {location.href = document.referrer};
                 </script>";
             }
             if(in_array($dado['symbol'], $valor)) {
@@ -250,7 +256,8 @@ class CarteiraController extends Controller
 
             $valores_calculados[$symbol] = ($vcp)/100;
 
-            $quantidade[$symbol] = intval($valores_calculados[$symbol] / floatval($r['price']));
+            $quantidade[$symbol] = intval($valores_calculados[$symbol] && floatval($r['price'])) > 0 ? 
+                intval($valores_calculados[$symbol] / floatval($r['price'])) : 0;
 
             //dd($quantidade);
         }
