@@ -67,6 +67,9 @@
                                                 <a class="btn btn-success" type="button" href="/alterar-acao/{{$c['id']}}">
                                                     Visualizar
                                                 </a>
+                                                <a class="btn btn-success" type="button" href="/alterar-porcentagem/{{$c['id']}}">
+                                                    Alterar percentual
+                                                </a>
                                             </td>
                                         </tr>
                                         @endforeach

@@ -141,7 +141,7 @@
                                 <button class="btn btn-success" type="submit">{{ __('Confirmar')}}</button>
                             </div>
                             <div class="card">
-                                <a class="btn btn-danger" type="button" href="/listar-carteiras">{{ __('Cancelar')}}</a>
+                                <a class="btn btn-danger" type="button" href="/carteira-aporte-listar">{{ __('Cancelar')}}</a>
                             </div>
                         </div>    
                     </div>
