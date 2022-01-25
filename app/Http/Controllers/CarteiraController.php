@@ -205,6 +205,57 @@ class CarteiraController extends Controller
         return redirect('/dashboard');
     }
 
+
+    public function carteira_cadastrar_semvalor()
+    {
+
+        $valor = $_POST['acao'];
+
+        foreach($valor as $v) {
+            $porcentagens[$v] = $_POST[$v];
+        }
+
+        $nome = $_POST['nome'];
+        $valor_carteira = $_POST['valor_carteira'];
+        $quantidade = [];
+
+        //Busca valores
+        $allDados = Info_ativo::all();
+
+        $allDadosInfo = [];
+        foreach($allDados as $v) {
+            array_push($allDadosInfo,$v);
+        }
+
+        $ret = [];
+
+        foreach($allDadosInfo as $adi) 
+        {
+            if(in_array($adi->symbol,$valor))
+            {
+                array_push($ret, $adi);
+            }
+        }
+
+       
+
+        Carteira::create(['id_usuario'=>Auth::id(),'nome'=>$nome, 'valor'=>$valor_carteira]);
+        $id_carteira = Carteira::orderBy('created_at', 'desc')->get('id')->first();
+
+        foreach($ret as $r) {
+            Acao_carteira::create([
+            'id_usuario'=>Auth::id(), 
+            'id_carteira'=>$id_carteira->id, 
+            'ativo'=>$r['symbol'],
+            'valor'=>0, 
+            'porcentagem_objetivo'=>$porcentagens[$r['symbol']], 
+            'preco_acao'=>$r['price'],
+            'quantidade'=>0,
+            'setor'=>$r['description']
+            ]);
+        }
+    }
+
     public function listar() {
 
         $dadosCarteiras = Carteira::all()->where('id_usuario', '=', Auth::id());
@@ -280,11 +331,17 @@ class CarteiraController extends Controller
 
     }
 
-    public function comprar_vender($id_carteira) 
+    public function comprar_vender($id) 
     {
-        $acao_carteiras = Acao_carteira::where('id_carteira', $id_carteira)->get();
+
+
+        
+        $acao_carteiras = Acao_carteira::where('id_carteira', $id)->get();
+        $valor = Carteira::where('id',$id)->first('valor');
+        $valor = $valor->valor;
+        
         //dd($acao_carteiras);
-        return view('pages.carteiras.carteira-venda-compra', compact('acao_carteiras'));
+        return view('pages.carteiras.carteira-venda-compra', compact('acao_carteiras', 'id', 'valor'));
         
     }
 
@@ -294,10 +351,14 @@ class CarteiraController extends Controller
         $quantidade_add = $_POST['quantidade_add'];
         $quantidade_atual = $_POST['quantidade_atual'];
         
+        $patrimonio_atual = $_POST['patrimonio_atual'];
+        $patrimonio_add = $_POST['patrimonio_add'];
         
+        //dd(floatval($patrimonio_add[0]));
 
         $id_carteira = $_POST['qualquernome'];
-
+        $id = $_POST['id_valor'];
+        
         //dd($id_carteira);
 
         $preco_acao = $_POST['preco_acao'];
@@ -308,8 +369,21 @@ class CarteiraController extends Controller
 
         $arr_valor_total = [];
         $arr_quantidade_total = [];
+        
+        $patrimonio_total = $_POST['valor'];
 
-        for ($i=0;$i<count($quantidade_add);$i++)
+        
+
+        //dd($patrimonio_total);
+
+        // foreach($patrimonio_atual as $pa)
+        // {
+        //     $patrimonio_total = floatval($pa) + $patrimonio_total;
+        // }
+        
+        // dd($patrimonio_total);
+
+        for($i=0;$i<count($quantidade_add);$i++)
         {
 
 
@@ -322,30 +396,24 @@ class CarteiraController extends Controller
             //Valores totais atualizados
             $valor_total = $valor_para_adicionar + $valor_atual;
             $quantidade_total = intval($quantidade_add[$i]) + intval($quantidade_atual[$i]);
+            
+            //print_r($patrimonio_total.'<br>');
+            $patrimonio_total = $patrimonio_total + floatval($patrimonio_add[$i]);
+            //print_r($patrimonio_total.'+'.$patrimonio_add[$i].'<br>');
 
             array_push($arr_valor_total, $valor_total);
             array_push($arr_quantidade_total, $quantidade_total);
-
+            
 
             // print_r($valor_total."<br>");
             // print_r($quantidade_total."<br><br>");
-
-            
-
         }
 
-
-        // exit;
-        // dd($arr_valor_total, $arr_quantidade_total);
         
-
+        //dd($arr_valor_total, $arr_quantidade_total, $patrimonio_total, $patrimonio_add);
+        
         for($i=0; $i<count($quantidade_add); $i++)
         {
-
-            // print_r($id_carteira[$i]);
-            // print_r($arr_valor_total[$i]);
-            // print_r($arr_quantidade_total[$i]);
-
             Acao_carteira::
             where('id',$id_carteira[$i])
             ->update(
@@ -353,8 +421,19 @@ class CarteiraController extends Controller
                     'valor'=>$arr_valor_total[$i],
                     'quantidade'=>$arr_quantidade_total[$i]
                 ]
-                );
+                );  
         }
+
+        //dd($patrimonio_total);
+
+        Carteira::
+        where('id',$id)
+        ->update(
+            [
+                'valor'=> $patrimonio_total
+            ]
+            );
+
         return redirect('/carteira-aporte-listar');
         //exit;
 
